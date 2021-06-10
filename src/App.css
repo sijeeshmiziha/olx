@@ -1,0 +1,140 @@
+/* Global responsive and base styles – OLX India (olx.in) exact clone */
+:root {
+  --olx-primary: #002f34;
+  --olx-primary-hover: #00464d;
+  --olx-accent: #23e5db;
+  --olx-highlight: #ffce32;
+  --olx-cta: #3a77ff;
+  --olx-error: #c62828;
+  --olx-bg: #ebeeef;
+  --olx-bg-light: #f7f9f9;
+  --olx-text: #002f34;
+  --olx-text-muted: #7f9799;
+  --olx-border: #e7e9e9;
+  --olx-card-shadow: 0 2px 4px rgba(0, 47, 52, 0.08);
+  --olx-touch-min: 44px;
+  --olx-radius: 4px;
+  --olx-radius-card: 8px;
+  --olx-shadow: 0 1px 3px rgba(0, 47, 52, 0.08);
+  --olx-content-max: 1350px;
+  --olx-content-padding: 24px;
+  --olx-content-padding-mobile: 16px;
+  --olx-breakpoint-sm: 480px;
+  --olx-breakpoint-md: 768px;
+  --olx-breakpoint-lg: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes olxFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.olxFadeIn {
+  animation: olxFadeIn 0.3s ease-out forwards;
+}
+
+/* Touch-friendly minimum tap targets */
+@media (max-width: 768px) {
+  button,
+  a,
+  input[type='submit'],
+  .card,
+  .dashboardTab,
+  .shareBtn,
+  .adActionBtn,
+  .favoriteButton {
+    min-height: var(--olx-touch-min);
+    min-width: var(--olx-touch-min);
+  }
+
+  .viewParentDiv {
+    flex-direction: column;
+    padding-top: 5em;
+  }
+
+  .viewParentDiv .imageShowDiv {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .viewParentDiv .rightSection {
+    width: 100%;
+    margin-top: 0;
+    padding: 16px;
+  }
+
+  .advancedSearchLayout {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .advancedSearchSidebar {
+    width: 100%;
+  }
+
+  .filterSidebar {
+    width: 100%;
+  }
+
+  .messagesPage {
+    flex-direction: column;
+  }
+
+  .messagesSidebar {
+    width: 100%;
+    max-height: 40vh;
+  }
+
+  .categoryGridList {
+    justify-content: center;
+  }
+
+  .headerChildDiv {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .loginPage a,
+  .loginPage span {
+    padding: 8px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .centerDiv {
+    width: 95%;
+    padding: 24px;
+    left: 50%;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .myAdsGrid .card,
+  .similarAdsGrid .card,
+  .searchResultCard .card {
+    width: 100%;
+  }
+
+  .dashboardTabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboardTab {
+    white-space: nowrap;
+    padding: 12px 16px;
+  }
+}
