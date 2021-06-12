@@ -1,0 +1,227 @@
+.loginPageWrapper {
+  padding: var(--olx-content-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--olx-bg);
+}
+
+.loginHomeLink {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  color: var(--olx-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.loginHomeLink:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.loginParentDiv {
+  border: 1px solid var(--olx-border);
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: var(--olx-radius-card);
+  background: #fff;
+  box-shadow: var(--olx-shadow);
+  box-sizing: border-box;
+}
+
+.loginLogoLink {
+  display: block;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+.loginParentDiv img {
+  display: block;
+  margin: 0 auto;
+  max-width: 80px;
+  height: auto;
+}
+
+.loginFormGroup {
+  margin-bottom: 16px;
+}
+
+.loginFormGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-text);
+  margin-bottom: 6px;
+}
+
+.loginParentDiv .input {
+  width: 100%;
+  padding: 10px 0 8px;
+  font-size: 16px;
+  color: var(--olx-text);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--olx-border);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.loginParentDiv .input::placeholder {
+  color: var(--olx-text-muted);
+}
+
+.loginParentDiv .input:focus {
+  border-bottom-color: var(--olx-accent);
+}
+
+.loginFormGroup .formError {
+  display: block;
+  color: var(--olx-error);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.loginForgotLink {
+  font-size: 13px;
+  color: var(--olx-primary);
+  margin-top: 4px;
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.loginForgotLink:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.loginParentDiv button[type='submit'] {
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  background-color: var(--olx-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: var(--olx-radius);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.loginParentDiv button[type='submit']:hover {
+  background-color: #fff;
+  color: var(--olx-primary);
+  border-color: var(--olx-primary);
+}
+
+.loginDivider {
+  text-align: center;
+  margin: 16px 0 12px;
+  color: var(--olx-text-muted);
+  font-size: 14px;
+}
+
+.loginGoogleBtn {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 12px;
+  background: #fff;
+  color: var(--olx-primary);
+  border: 2px solid var(--olx-primary);
+  border-radius: var(--olx-radius);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.loginGoogleBtn:hover {
+  background: var(--olx-bg-light);
+}
+
+.loginSocialBtn {
+  margin-top: 4px;
+}
+
+.loginGuestBtn {
+  width: 100%;
+  height: 44px;
+  margin-top: 8px;
+  background: transparent;
+  color: var(--olx-text-muted);
+  border: 1px dashed var(--olx-border);
+  border-radius: var(--olx-radius);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.loginGuestBtn:hover {
+  border-color: var(--olx-primary);
+  color: var(--olx-primary);
+}
+
+.loginEmailLinkText {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--olx-primary);
+  text-decoration: none;
+}
+
+.loginEmailLinkText:hover {
+  text-decoration: underline;
+}
+
+.loginSignupLink {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  color: var(--olx-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.loginSignupLink:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.formError {
+  display: block;
+  color: var(--olx-error);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .loginPageWrapper {
+    padding: 16px;
+  }
+  .loginParentDiv {
+    padding: 16px;
+  }
+  .loginParentDiv button[type='submit'],
+  .loginGoogleBtn {
+    height: 44px;
+    font-size: 15px;
+  }
+  .loginGuestBtn {
+    height: 40px;
+    font-size: 13px;
+  }
+}
