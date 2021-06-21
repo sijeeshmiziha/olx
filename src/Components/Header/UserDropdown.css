@@ -1,0 +1,346 @@
+.userDropdownWrap {
+  position: relative;
+}
+
+/* ── Mobile overlay backdrop (hidden on desktop) ── */
+.userDropdownOverlay {
+  display: none;
+}
+
+/* ── Header button with avatar ── */
+.headerUserBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #002f34;
+  min-width: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.headerUserBtn:hover {
+  background: #f0f4f5;
+  border-radius: 4px;
+}
+
+.headerUserAvatar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.headerAvatarImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ebeeef;
+}
+
+.headerAvatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #002f34;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.headerUserName {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.headerVerifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .headerUserName {
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerUserName {
+    display: none;
+  }
+  .headerUserArrow {
+    display: none;
+  }
+}
+
+.headerUserArrow {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* ── Dropdown panel ── */
+.userDropdownPanel {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 280px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  z-index: 1000;
+}
+
+.userDropdownPanelInner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Profile link at top of dropdown ── */
+.userDropdownProfileLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  border-bottom: 1px solid #ebeeef;
+  margin-bottom: 4px;
+  transition: background 0.15s ease;
+}
+
+.userDropdownProfileLink:hover {
+  background: #f0f4f5;
+}
+
+.userDropdownProfileAvatar img,
+.userDropdownAvatarPlaceholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userDropdownAvatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #002f34;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.userDropdownProfileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userDropdownProfileInfo strong {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  color: #002f34;
+}
+
+.dropdownVerifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.userDropdownEmail {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userDropdownEditHint {
+  display: block;
+  font-size: 12px;
+  color: #1da1f2;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.userDropdownProfileArrow {
+  font-size: 22px;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* ── Nav links ── */
+.userDropdownNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.userDropdownNav a {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #002f34;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.userDropdownNav a:hover {
+  background: #f0f4f5;
+}
+
+
+/* ── Logout ── */
+.userDropdownLogout {
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c62828;
+  background: transparent;
+  border: 1px solid #ebeeef;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.userDropdownLogout:hover {
+  background: #ffebee;
+}
+
+/* ──────────────────────────────────────────
+   Mobile responsive styles (≤ 768px)
+   ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Semi-transparent overlay behind the dropdown */
+  .userDropdownOverlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Dropdown becomes a bottom sheet on mobile */
+  .userDropdownPanel {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 0;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    z-index: 1000;
+    animation: userDropdownSlideUp 0.25s ease-out;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  @keyframes userDropdownSlideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .userDropdownPanelInner {
+    padding: 8px 12px;
+    overflow-y: auto;
+    max-height: 85vh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Drag handle indicator */
+  .userDropdownPanelInner::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    margin: 8px auto 12px;
+  }
+
+  /* Profile link */
+  .userDropdownProfileLink {
+    padding: 14px 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Bigger touch targets for nav items */
+  .userDropdownNav a {
+    padding: 14px 12px;
+    font-size: 15px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .userDropdownNav a:active {
+    background: #f0f4f5;
+  }
+
+  /* Logout button */
+  .userDropdownLogout {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 14px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  .userDropdownLogout:active {
+    background: #ffebee;
+  }
+
+  /* Avatar button in header - make it a proper touch target */
+  .headerUserBtn {
+    padding: 0 6px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .userDropdownPanel {
+    max-height: 90vh;
+  }
+
+  .userDropdownPanelInner {
+    max-height: 90vh;
+    padding: 8px 8px;
+  }
+}

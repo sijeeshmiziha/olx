@@ -1,0 +1,298 @@
+.headerParentDiv {
+  padding: 10px 16px;
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.headerChildDiv {
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerHamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.headerHamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #002f34;
+}
+
+.brandName {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.headerLocationWrap {
+  flex-shrink: 0;
+}
+
+.headerSearchWrap {
+  flex: 1;
+  min-width: 0;
+  max-width: 420px;
+  position: relative;
+}
+
+.headerSearchInner {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.headerSearchInner:focus-within {
+  border-color: #23e5db;
+  outline: none;
+}
+
+.headerSearchWrap input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.headerClearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: #e8ebed;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #002f34;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+.headerClearBtn:hover {
+  background: #dde1e3;
+}
+
+.headerSearchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #002f34;
+}
+
+.headerSearchBtn:hover {
+  opacity: 0.8;
+}
+
+.headerLanguage {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.headerLanguage span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #002f34;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerLoginLink {
+  font-size: 16px;
+  font-weight: 600;
+  color: #002f34;
+  text-decoration: underline;
+  padding: 8px 4px;
+}
+
+.headerLoginLink:hover {
+  color: #00464d;
+}
+
+.headerSellLink {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.sellMenu {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.sellMenu .all {
+  fill: white;
+}
+.sellMenu .top {
+  fill: #23e5db;
+}
+.sellMenu .left {
+  fill: #ffce32;
+}
+.sellMenu .right {
+  fill: #3a77ff;
+}
+
+.sellMenu .sellMenuContent {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #002f34;
+}
+
+.sellMenu .sellMenuContent span {
+  margin-left: 5px;
+}
+
+.dataResult-header {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  max-height: 320px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.dataResult-header .dataItem-header {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: #002f34;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dataItem-header p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dataResult-header .dataItem-header:hover {
+  background: #ebeeef;
+}
+
+@media (max-width: 768px) {
+  .headerParentDiv {
+    padding: 8px 12px;
+  }
+
+  .headerChildDiv {
+    gap: 8px;
+  }
+
+  .headerLocationWrap,
+  .headerSearchWrap,
+  .headerLanguage {
+    display: none;
+  }
+
+  .headerHamburger {
+    display: flex;
+  }
+
+  .headerRight {
+    margin-left: auto;
+    gap: 4px;
+    /* Prevent overflow clipping so fixed dropdowns work */
+    overflow: visible;
+  }
+
+  /* Hide the fancy SVG sell button on mobile, show compact version */
+  .sellMenu > svg {
+    display: none;
+  }
+
+  .sellMenu .sellMenuContent {
+    position: static;
+    transform: none;
+    background: #002f34;
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    gap: 5px;
+    align-items: center;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 47, 52, 0.25);
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .sellMenu .sellMenuContent:active {
+    transform: scale(0.95);
+    background: #00464d;
+  }
+
+  .sellMenu .sellMenuContent svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .sellMenu .sellMenuContent svg path {
+    fill: #ffffff;
+  }
+
+  .sellMenu .sellMenuContent span {
+    margin-left: 2px;
+  }
+}
