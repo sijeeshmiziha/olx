@@ -1,0 +1,34 @@
+/* Promo banner – OLX India: same content width, card style */
+.bannerParentDiv {
+  background: var(--olx-bg);
+  padding: 0 var(--olx-content-padding);
+  margin-top: 4px;
+}
+
+.bannerChildDiv {
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--olx-radius-card);
+  overflow: hidden;
+  box-shadow: var(--olx-card-shadow);
+  border: 1px solid var(--olx-border);
+}
+
+.bannerChildDiv .banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bannerChildDiv .banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .bannerParentDiv {
+    padding: 0 var(--olx-content-padding-mobile);
+  }
+}
