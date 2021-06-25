@@ -1,0 +1,18 @@
+.appMain {
+  padding-top: 64px;
+  min-height: calc(100vh - 64px);
+}
+
+.appMainNoHeader {
+  padding-top: 0;
+}
+
+@media (max-width: 768px) {
+  .appMain {
+    padding-bottom: 88px; /* 60px nav + 22px sell button overshoot + 6px breathing room */
+  }
+  .appMainNoHeader,
+  .appMainNoMobileNav {
+    padding-bottom: 0;
+  }
+}
