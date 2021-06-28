@@ -1,0 +1,131 @@
+.mobileBottomNav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  z-index: 998;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.96);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.mobileBottomNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 6px 4px 4px;
+  text-decoration: none;
+  color: #7f8c8d;
+  font-size: 10px;
+  min-width: 0;
+  gap: 2px;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease;
+}
+
+.mobileBottomNavItem.active {
+  color: #002f34;
+}
+
+.mobileBottomNavIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  line-height: 1;
+}
+
+.mobileBottomNavIcon svg {
+  display: block;
+}
+
+.mobileBottomNavLabel {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.mobileBottomNavItem.active .mobileBottomNavLabel {
+  font-weight: 600;
+  color: #002f34;
+}
+
+/* Sell button - prominent center action */
+.mobileBottomNavSell {
+  color: #002f34;
+}
+
+.mobileBottomNavSellIcon {
+  width: 48px;
+  height: 48px;
+  margin-top: -22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #23e5db 0%, #00a49a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 164, 154, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 3px solid #ffffff;
+}
+
+.mobileBottomNavSellIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mobileBottomNavSellIcon svg circle {
+  fill: transparent;
+  stroke: transparent;
+}
+
+.mobileBottomNavSellIcon svg path {
+  stroke: #ffffff;
+  stroke-width: 2.8;
+}
+
+.mobileBottomNavSell:active .mobileBottomNavSellIcon {
+  transform: scale(0.92);
+  box-shadow: 0 2px 6px rgba(0, 164, 154, 0.25);
+}
+
+.mobileBottomNavSell .mobileBottomNavLabel {
+  font-weight: 600;
+  color: #002f34;
+  margin-top: 2px;
+  font-size: 10px;
+}
+
+/* Active tap feedback */
+.mobileBottomNavItem:active {
+  opacity: 0.7;
+}
+
+.mobileBottomNavSell:active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .mobileBottomNav {
+    display: flex;
+  }
+}
+
+/* Bottom padding handled in Layout.css */
