@@ -1,0 +1,36 @@
+/* Location/date bar – OLX India exact: same bg as page, subtle border */
+.locationBanner {
+  padding: 8px var(--olx-content-padding);
+  background: var(--olx-bg);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.locationBanner span {
+  color: var(--olx-primary);
+}
+
+.locationBannerBtn {
+  background: none;
+  border: none;
+  color: var(--olx-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.locationBannerBtn:hover {
+  color: var(--olx-primary-hover);
+}
+
+@media (max-width: 768px) {
+  .locationBanner {
+    padding: 8px var(--olx-content-padding-mobile);
+  }
+}

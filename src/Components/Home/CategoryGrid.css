@@ -1,0 +1,138 @@
+/* Category strip – OLX India exact: padding, gap, card look */
+.categoryGridWrapper {
+  background: var(--olx-bg);
+  padding: 12px 0 16px;
+}
+
+.categoryGridStrip {
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  padding: 0 var(--olx-content-padding);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.categoryGridScroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+
+.categoryGridScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryGridItem {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  min-width: 88px;
+  max-width: 96px;
+  background: #fff;
+  border: none;
+  border-radius: var(--olx-radius-card);
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: var(--olx-card-shadow);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.categoryGridItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 47, 52, 0.12);
+  transform: translateY(-1px);
+}
+
+.categoryGridIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--olx-bg);
+}
+
+.catSvg {
+  width: 28px;
+  height: 28px;
+  fill: var(--olx-primary);
+}
+
+.categoryGridEmoji {
+  font-size: 24px;
+}
+
+.categoryIcon_car .catSvg {
+  fill: #3a77ff;
+}
+.categoryIcon_motorcycle .catSvg {
+  fill: #da4445;
+}
+.categoryIcon_mobile .catSvg {
+  fill: #ffce32;
+}
+.categoryIcon_house .catSvg {
+  fill: #3a77ff;
+}
+.categoryIcon_scooter .catSvg {
+  fill: #23e5db;
+}
+.categoryIcon_truck .catSvg {
+  fill: #ff6f31;
+}
+.categoryIcon_rent .catSvg {
+  fill: #3a77ff;
+}
+.categoryIcon_electronics .catSvg {
+  fill: #3a77ff;
+}
+.categoryIcon_jobs .catSvg {
+  fill: #23e5db;
+}
+
+.categoryGridName {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  text-align: center;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .categoryGridStrip {
+    padding: 0 var(--olx-content-padding-mobile);
+  }
+  .categoryGridWrapper {
+    padding: 10px 0 12px;
+  }
+  .categoryGridItem {
+    min-width: 80px;
+    padding: 8px 12px;
+  }
+  .categoryGridIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .catSvg {
+    width: 24px;
+    height: 24px;
+  }
+  .categoryGridName {
+    font-size: 11px;
+  }
+}

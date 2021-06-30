@@ -1,0 +1,6 @@
+/* Home page – exact OLX India (olx.in) clone: colours, padding, margin */
+.homeParentDiv {
+  background: var(--olx-bg);
+  min-height: 100vh;
+  padding-bottom: 24px;
+}
