@@ -1,0 +1,161 @@
+/* Ad cards – OLX India exact: white card, shadow, typography */
+.card {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: var(--olx-radius-card);
+  border: 1px solid var(--olx-border);
+  box-shadow: var(--olx-card-shadow);
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 47, 52, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 47, 52, 0.12);
+  transform: translateY(-1px);
+}
+
+.cardImageWrap {
+  position: relative;
+  width: 100%;
+}
+
+.cardSoldBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: var(--olx-error);
+  color: #fff;
+  border-radius: var(--olx-radius);
+}
+
+.cardFeaturedBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: var(--olx-highlight);
+  color: var(--olx-primary);
+  border-radius: var(--olx-radius);
+}
+
+.cardFavorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--olx-bg);
+  overflow: hidden;
+}
+
+.cardImagePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #f0f0f0 0%, #e8e8e8 50%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: cardImagePlaceholderShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes cardImagePlaceholderShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.cardContent {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 88px;
+}
+
+.cardPrice {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--olx-primary);
+  line-height: 1.3;
+}
+
+.cardName {
+  margin: 0;
+  font-size: 14px;
+  color: var(--olx-primary);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+  font-weight: 400;
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--olx-text-muted);
+  margin-top: 4px;
+}
+
+.cardLocation,
+.cardDate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardLocation {
+  max-width: 65%;
+}
+
+@media (max-width: 480px) {
+  .cardPrice {
+    font-size: 16px;
+  }
+  .cardName {
+    font-size: 13px;
+  }
+  .cardContent {
+    padding: 10px;
+  }
+}
