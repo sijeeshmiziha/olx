@@ -1,0 +1,128 @@
+/* Quick menu category sections – OLX India design system */
+.dynamicPostsWrapper {
+  background: var(--olx-bg);
+  padding: 16px 0 24px;
+  box-sizing: border-box;
+}
+
+.dynamicPostsInner {
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  padding: 0 var(--olx-content-padding);
+  box-sizing: border-box;
+}
+
+.dynamicPostsHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.dynamicPostsHeading span:first-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--olx-primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.dynamicPostsHeading a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.dynamicPostsHeading a:hover {
+  text-decoration: underline;
+}
+
+.dynamicPostsCards {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+
+.dynamicPostsCards::-webkit-scrollbar {
+  display: none;
+}
+
+.dynamicPostsCardSlot {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-width: 200px;
+  max-width: 220px;
+}
+
+.dynamicPostsCardSlot .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dynamicPostsCardSlot .cardImageWrap {
+  flex: 0 0 auto;
+}
+
+.dynamicPostsCardSlot .cardContent {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Skeleton slots in horizontal strip */
+.dynamicPostsCardSlot .cardSkeleton {
+  width: 100%;
+  min-width: 200px;
+  max-width: 220px;
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .dynamicPostsInner {
+    padding: 0 var(--olx-content-padding-mobile);
+  }
+  .dynamicPostsWrapper {
+    padding: 12px 0 20px;
+  }
+  .dynamicPostsHeading {
+    margin-bottom: 12px;
+  }
+  .dynamicPostsHeading span:first-child {
+    font-size: 20px;
+  }
+  .dynamicPostsCards {
+    gap: 10px;
+  }
+  .dynamicPostsCardSlot {
+    min-width: 160px;
+    max-width: 180px;
+  }
+  .dynamicPostsCardSlot .cardSkeleton {
+    min-width: 160px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dynamicPostsHeading span:first-child {
+    font-size: 18px;
+  }
+  .dynamicPostsCardSlot {
+    min-width: 140px;
+    max-width: 160px;
+  }
+  .dynamicPostsCardSlot .cardSkeleton {
+    min-width: 140px;
+    max-width: 160px;
+  }
+}

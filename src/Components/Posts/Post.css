@@ -1,0 +1,139 @@
+/* Fresh recommendations – clean section, grid, load more (OLX-style) */
+.postParentDiv {
+  padding: 0 var(--olx-content-padding);
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.recommendations {
+  margin: 0 auto;
+  padding: 28px 0 8px;
+  background: transparent;
+  max-width: var(--olx-content-max);
+}
+
+.recommendationsHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.recommendationsHeading span {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--olx-primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.recommendationsHeading a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.recommendationsHeading a:hover {
+  text-decoration: underline;
+}
+
+.freshRecommendationGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.freshRecommendationCard {
+  margin: 0;
+  min-width: 0;
+}
+
+.freshRecommendationCard .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.freshRecommendationCard .cardImageWrap {
+  flex: 0 0 auto;
+}
+
+.freshRecommendationCard .cardContent {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.loadMoreWrap {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.loadMoreBtn {
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  background: #fff;
+  border: 2px solid var(--olx-primary);
+  border-radius: var(--olx-radius);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.loadMoreBtn:hover {
+  background: var(--olx-primary);
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .freshRecommendationGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .postParentDiv {
+    padding: 0 var(--olx-content-padding-mobile);
+  }
+  .recommendations {
+    padding: 24px 0 4px;
+  }
+  .freshRecommendationGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .recommendationsHeading {
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  .recommendationsHeading span {
+    font-size: 20px;
+  }
+  .loadMoreWrap {
+    margin-top: 24px;
+    margin-bottom: 4px;
+  }
+  .loadMoreBtn {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .freshRecommendationGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .recommendationsHeading span {
+    font-size: 18px;
+  }
+}
