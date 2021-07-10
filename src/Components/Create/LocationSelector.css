@@ -1,0 +1,137 @@
+/* =====================================================
+   LOCATION SELECTOR
+   ===================================================== */
+
+.locationSelector label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--olx-primary, #002f34);
+  margin-bottom: 8px;
+}
+
+.locationSelectorRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.locationFieldWrap {
+  flex: 1;
+  min-width: 160px;
+}
+
+.locationFieldWrap label {
+  margin-bottom: 6px;
+}
+
+.locationSelector .locationSelect {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1.5px solid #d5dadc;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--olx-text, #002f34);
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7c7e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.locationSelector .locationSelect:focus {
+  outline: none;
+  border-color: var(--olx-primary, #002f34);
+  box-shadow: 0 0 0 3px rgba(0, 47, 52, 0.08);
+}
+
+.locationSelector .locationSelect:disabled {
+  background: #f4f6f6;
+  color: #8a9a9d;
+  cursor: not-allowed;
+}
+
+.locationSelector .locationPincode {
+  max-width: 160px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1.5px solid #d5dadc;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--olx-text, #002f34);
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.locationSelector .locationPincode:focus {
+  outline: none;
+  border-color: var(--olx-primary, #002f34);
+  box-shadow: 0 0 0 3px rgba(0, 47, 52, 0.08);
+}
+
+.locationSelector .locationPincode::placeholder {
+  color: #aab4b6;
+}
+
+.locationUseMyLocation {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  background: #eef7f8;
+  color: var(--olx-primary, #002f34);
+  border: 1.5px solid var(--olx-primary, #002f34);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.locationUseMyLocation:hover:not(:disabled) {
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+}
+
+.locationUseMyLocation:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.locationGeoError {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #e53935;
+}
+
+@media (max-width: 480px) {
+  .locationSelectorRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .locationFieldWrap {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .locationSelector .locationPincode {
+    max-width: 100%;
+    width: 100%;
+  }
+}
