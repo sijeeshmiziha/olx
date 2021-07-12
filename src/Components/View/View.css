@@ -1,0 +1,358 @@
+.viewBreadcrumb {
+  width: 100%;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--olx-text-muted);
+}
+
+.viewBreadcrumb a {
+  color: var(--olx-primary);
+  text-decoration: none;
+}
+
+.viewBreadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.viewBreadcrumbSep {
+  margin: 0 6px;
+  color: var(--olx-text-muted);
+}
+
+.viewBreadcrumbCurrent {
+  color: var(--olx-primary);
+  font-weight: 500;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.viewParentDiv {
+  padding: 16px;
+  padding-top: 1em;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.viewTopRow {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 24px;
+}
+
+.viewParentDiv .imageShowDiv {
+  padding: 0;
+  width: 58%;
+  min-width: 280px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.viewParentDiv .rightSection {
+  padding: 0;
+  margin-top: 0;
+  width: calc(42% - 24px);
+  min-width: 280px;
+  box-sizing: border-box;
+}
+
+.viewPrice {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--olx-primary);
+  margin: 0 0 8px 0;
+}
+
+.viewAdTypeBadge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  background: #e7f5f5;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.viewOriginalPrice {
+  text-decoration: line-through;
+  font-size: 18px;
+  color: var(--olx-text-muted);
+  margin-right: 8px;
+}
+
+.viewNegotiable {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--olx-text-muted);
+  margin-left: 8px;
+}
+
+.viewTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.viewTag {
+  font-size: 12px;
+  padding: 4px 10px;
+  background: #f0f4f5;
+  border-radius: 4px;
+  color: var(--olx-primary);
+}
+
+.viewDelivery,
+.viewWarranty,
+.viewReturnPolicy,
+.viewPaymentMethods {
+  font-size: 14px;
+  color: var(--olx-text);
+  margin: 4px 0;
+}
+
+.viewDeliveryIcon,
+.viewWarrantyIcon {
+  margin-right: 4px;
+}
+
+.viewStats {
+  font-size: 13px;
+  color: var(--olx-text-muted);
+  margin: 4px 0;
+}
+
+.viewStats span + span {
+  margin-left: 12px;
+}
+
+.viewVideoSection {
+  margin: 16px 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--olx-border);
+}
+
+.viewVideoEmbed {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  border: none;
+  border-radius: 8px;
+}
+
+.viewVideoLink {
+  display: inline-block;
+  color: var(--olx-primary);
+  text-decoration: underline;
+}
+
+.viewTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.viewMeta {
+  font-size: 14px;
+  color: var(--olx-text-muted);
+  margin: 0 0 4px 0;
+}
+
+/* ── Extra details grid (brand, model, year, etc.) ── */
+.viewExtraDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 12px 0;
+  border: 1px solid var(--olx-border, #e7e9e9);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--olx-bg-light, #f7f9f9);
+}
+
+.viewExtraItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--olx-border, #e7e9e9);
+  border-right: 1px solid var(--olx-border, #e7e9e9);
+}
+
+.viewExtraItem:nth-child(2n) {
+  border-right: none;
+}
+
+.viewExtraItem:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.viewExtraLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--olx-text-muted, #7f9799);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.viewExtraValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-primary, #002f34);
+}
+
+@media (max-width: 480px) {
+  .viewExtraDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .viewExtraItem {
+    border-right: none;
+  }
+
+  .viewExtraItem:last-child {
+    border-bottom: none;
+  }
+}
+
+.viewLocation {
+  font-size: 14px;
+  color: var(--olx-primary);
+  margin: 4px 0;
+}
+
+.viewLocationIcon {
+  margin-right: 4px;
+}
+
+.viewDate {
+  font-size: 13px;
+  color: var(--olx-text-muted);
+  margin: 4px 0 0 0;
+}
+
+.viewSoldBadge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 4px 10px;
+  background: var(--olx-error);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: var(--olx-radius);
+}
+
+.productDetails {
+  padding: 0 0 16px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.productDescription {
+  padding: 16px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.productDescription .p-bold {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--olx-primary);
+  margin: 0 0 8px 0;
+}
+
+.productDescription p {
+  font-size: 14px;
+  color: var(--olx-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.viewReadMore {
+  background: none;
+  border: none;
+  color: var(--olx-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
+.viewLoginToChat {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--olx-text-muted);
+}
+
+.viewSimilarSection {
+  padding: 24px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.viewFavoriteWrap {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Match watch button to favorite button style on product detail */
+.viewFavoriteWrap .watchlistBtn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #002f34;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+}
+
+.viewFavoriteWrap .watchlistBtn:hover {
+  background: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.viewFavoriteWrap .watchlistBtnActive {
+  background: #002f34;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.viewFavoriteWrap .watchlistBtnActive:hover {
+  background: #00464d;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .viewTopRow {
+    flex-direction: column;
+  }
+  .viewParentDiv .imageShowDiv,
+  .viewParentDiv .rightSection {
+    width: 100%;
+    min-width: 0;
+  }
+}
