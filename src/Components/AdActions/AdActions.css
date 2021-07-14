@@ -1,0 +1,145 @@
+.adActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.adActionBtn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.adActionBtn.edit {
+  border-color: #002f34;
+  color: #002f34;
+}
+
+.adActionBtn.edit:hover {
+  background: #002f34;
+  color: #fff;
+}
+
+.adActionBtn.sold {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.adActionBtn.sold:hover {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.adActionBtn.delete {
+  border-color: #c62828;
+  color: #c62828;
+}
+
+.adActionBtn.delete:hover {
+  background: #c62828;
+  color: #fff;
+}
+
+/* ── Featured request button ── */
+.adActionBtn.featured {
+  border-color: #ff6f00;
+  color: #ff6f00;
+  font-weight: 600;
+}
+
+.adActionBtn.featured:hover {
+  background: #ff6f00;
+  color: #fff;
+}
+
+.adActionBtn.featured:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Featured Request Section ── */
+.featuredRequestSection {
+  margin: 16px 0;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #e7e9e9;
+}
+
+.featuredRequestTitle {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #002f34;
+}
+
+.featuredRequestBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #e7e9e9;
+}
+
+.featuredRequestBox--pending {
+  background: #fff8e1;
+  border-color: #ffe082;
+}
+
+.featuredRequestBox--approved {
+  background: #e8f5e9;
+  border-color: #a5d6a7;
+}
+
+.featuredRequestBox--rejected {
+  background: #ffebee;
+  border-color: #ef9a9a;
+}
+
+.featuredRequestIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.featuredRequestDesc {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.featuredRequestStatus {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.featuredRequestHint {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .adActions {
+    gap: 8px;
+  }
+  .adActionBtn {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .featuredRequestSection {
+    padding: 12px;
+  }
+}
