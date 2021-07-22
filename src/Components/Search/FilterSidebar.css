@@ -1,0 +1,91 @@
+.filterSidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.filterSidebarTitle {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.filterGroup {
+  margin-bottom: 16px;
+}
+
+.filterGroup label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.filterSelect,
+.filterInput {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.priceRangeInputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceRangeInputs .filterInput {
+  flex: 1;
+}
+
+.priceRangeSep {
+  font-size: 12px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .filterSidebar {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 12px 0;
+  }
+
+  .filterSidebarTitle {
+    display: none;
+  }
+
+  .filterGroup {
+    margin-bottom: 12px;
+  }
+
+  .filterGroup label {
+    font-size: 13px;
+  }
+
+  .filterSelect,
+  .filterInput {
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1.5px solid #dde1e3;
+  }
+
+  .filterSelect:focus,
+  .filterInput:focus {
+    border-color: #002f34;
+    outline: none;
+  }
+
+  .priceRangeInputs {
+    gap: 6px;
+  }
+}

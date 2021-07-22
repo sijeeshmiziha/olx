@@ -1,0 +1,40 @@
+.sortDropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortDropdown label {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sortSelect {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 160px;
+}
+
+@media (max-width: 768px) {
+  .sortDropdown {
+    gap: 4px;
+  }
+
+  .sortDropdown label {
+    font-size: 12px;
+  }
+
+  .sortSelect {
+    min-width: 0;
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: 1.5px solid #ccd1d3;
+    background: #fff;
+    flex-shrink: 1;
+    max-width: 180px;
+  }
+}
