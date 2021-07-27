@@ -1,0 +1,94 @@
+/* Pagination – OLX theme */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 32px 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.paginationBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--olx-primary, #002f34);
+  background: #fff;
+  border: 1.5px solid var(--olx-border, #e7e9e9);
+  border-radius: var(--olx-radius, 4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.paginationBtn:hover:not(:disabled):not(.paginationActive) {
+  background: var(--olx-bg-light, #f7f9f9);
+  border-color: var(--olx-primary, #002f34);
+}
+
+.paginationBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.paginationActive {
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+  border-color: var(--olx-primary, #002f34);
+}
+
+.paginationActive:hover {
+  background: var(--olx-primary-hover, #00464d);
+}
+
+.paginationPrev,
+.paginationNext {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.paginationEllipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 40px;
+  font-size: 16px;
+  color: var(--olx-text-muted, #7f9799);
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 4px;
+    margin: 24px 0 8px;
+  }
+
+  .paginationBtn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .paginationPrev,
+  .paginationNext {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationBtn {
+    min-width: 34px;
+    height: 34px;
+    font-size: 13px;
+    padding: 0 6px;
+  }
+}
