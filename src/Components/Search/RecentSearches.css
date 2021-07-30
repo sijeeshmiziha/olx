@@ -1,0 +1,56 @@
+.recentSearchesBlock {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--olx-border, #e0e0e0);
+}
+
+.recentSearchesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.recentSearchesTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--olx-text, #002f34);
+}
+
+.recentSearchesClearBtn {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #d35400;
+  background: none;
+  border: 1px solid #d35400;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.recentSearchesClearBtn:hover {
+  background: #d35400;
+  color: #fff;
+}
+
+.recentSearchesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recentSearchesList li {
+  margin-bottom: 6px;
+}
+
+.recentSearchesLink {
+  font-size: 13px;
+  color: var(--olx-primary, #002f34);
+  text-decoration: none;
+}
+
+.recentSearchesLink:hover {
+  text-decoration: underline;
+}

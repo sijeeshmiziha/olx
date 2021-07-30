@@ -1,0 +1,150 @@
+.saveSearchOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.saveSearchModal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.saveSearchModal h3 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  color: #002f34;
+}
+
+.saveSearchModal label {
+  display: block;
+  margin: 12px 0 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.saveSearchModal input[type='text'] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.saveSearchCheck {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.saveSearchCheck input {
+  width: auto;
+}
+
+.saveSearchActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.saveSearchActions button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.saveSearchActions button[type='button'] {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.saveSearchActions button[type='submit'] {
+  background: #002f34;
+  color: #fff;
+}
+
+.savedSearchesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.savedSearchItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.savedSearchItem:last-child {
+  border-bottom: none;
+}
+
+.savedSearchName {
+  font-weight: 500;
+  color: #002f34;
+}
+
+.savedSearchMeta {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.savedSearchActions {
+  display: flex;
+  gap: 8px;
+}
+
+.savedSearchActions button {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.savedSearchApply {
+  background: #002f34;
+  color: #fff;
+}
+
+.savedSearchDelete {
+  background: transparent;
+  color: #c62828;
+  border: 1px solid #c62828;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .saveSearchModal {
+    padding: 16px;
+  }
+  .saveSearchActions {
+    flex-direction: column;
+  }
+  .saveSearchActions button {
+    width: 100%;
+    text-align: center;
+  }
+  .savedSearchItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
