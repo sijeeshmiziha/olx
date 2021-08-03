@@ -1,0 +1,190 @@
+.profilePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--olx-content-padding);
+}
+
+.profileSection {
+  margin-top: 24px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--olx-border);
+  border-radius: var(--olx-radius-card);
+  box-shadow: var(--olx-shadow);
+}
+
+.profileSection h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: var(--olx-primary);
+}
+
+.profileLeaveReviewBtn {
+  padding: 10px 20px;
+  background: var(--olx-primary);
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: var(--olx-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.profileLeaveReviewBtn:hover {
+  background: var(--olx-primary-hover);
+}
+
+/* ─── Published Ads Section ─────────────────────────────────────────────── */
+.profileAdsSection {
+  overflow: hidden;
+}
+
+.profileAdsHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.profileAdsHeader h3 {
+  margin: 0;
+}
+
+.profileAdsCount {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: #f0f0f0;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.profileAdsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.profileAdCard {
+  min-width: 0;
+}
+
+.profileAdsEmpty {
+  text-align: center;
+  padding: 48px 16px;
+  color: #888;
+}
+
+.profileAdsEmptyIcon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.profileAdsEmpty p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profileAdsLoadMore {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profileLoadMoreBtn {
+  padding: 10px 32px;
+  background: transparent;
+  color: var(--olx-primary);
+  border: 2px solid var(--olx-primary);
+  border-radius: var(--olx-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profileLoadMoreBtn:hover {
+  background: var(--olx-primary);
+  color: #fff;
+}
+
+/* Responsive grid for ads */
+@media (max-width: 1024px) {
+  .profileAdsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .profilePage {
+    padding: var(--olx-content-padding-mobile, 16px);
+    padding-bottom: 24px;
+  }
+
+  .profileSection {
+    margin-top: 16px;
+    padding: 16px;
+  }
+
+  .profileSection h3 {
+    font-size: 16px;
+  }
+
+  .profileAdsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .profileAdsHeader {
+    margin-bottom: 14px;
+  }
+
+  .profileAdsCount {
+    font-size: 12px;
+  }
+
+  .profileLeaveReviewBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profileLoadMoreBtn {
+    width: 100%;
+  }
+
+  .profileAdsEmpty {
+    padding: 32px 12px;
+  }
+
+  .profileAdsEmptyIcon {
+    font-size: 36px;
+  }
+
+  .profileAdsEmpty p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profilePage {
+    padding: 12px;
+    padding-bottom: 20px;
+  }
+
+  .profileAdsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .profileSection {
+    margin-top: 12px;
+    padding: 14px 12px;
+    border-radius: 6px;
+  }
+}

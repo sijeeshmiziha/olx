@@ -1,0 +1,325 @@
+.profileHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.profileCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.profileAvatar {
+  flex-shrink: 0;
+}
+
+.profileAvatar img,
+.profileAvatar .avatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileAvatar .avatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #002f34;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.profileName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #002f34;
+}
+
+.profileVerifiedIcon {
+  flex-shrink: 0;
+}
+
+.profileVerifiedLabel {
+  display: inline-block;
+  padding: 2px 10px;
+  background: #e3f2fd;
+  color: #1565c0;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+.profileBadgeSmall {
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+.profileBadgeLevel {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #7f9799;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.profileTrustScore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.profileTrustBar {
+  width: 60px;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.profileTrustFill {
+  height: 100%;
+  background: #002f34;
+  border-radius: 3px;
+}
+
+.profileResponse {
+  margin: 2px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.profileSocialLinks {
+  margin: 6px 0;
+}
+
+.profileSocialLinks a {
+  font-size: 13px;
+  color: #002f34;
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.profileSocialLinks a:hover {
+  text-decoration: underline;
+}
+
+.profileFollowBtn {
+  padding: 8px 16px;
+  margin-top: 8px;
+  margin-right: 8px;
+  font-size: 14px;
+  color: #002f34;
+  background: #f0f4f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.profileFollowBtn:hover:not(:disabled) {
+  background: #e7e9e9;
+}
+
+.profileAbout {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.profileLocation,
+.profileMemberSince,
+.profileCompany,
+.profileLanguages {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.profileCompany {
+  font-weight: 600;
+  color: #444;
+}
+
+.profileLanguages {
+  font-style: italic;
+}
+
+.profileRating {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.profileStats {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #002f34;
+}
+
+.profileStats span,
+.profileStats .profileStatLink {
+  margin-right: 16px;
+}
+
+.profileStatLink {
+  color: #002f34;
+  text-decoration: none;
+}
+
+.profileStatLink:hover {
+  text-decoration: underline;
+}
+
+.profileEditBtn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #002f34;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.profileEditBtn:hover {
+  background: #00464d;
+  color: #fff;
+}
+
+/* ── Tablet ── */
+@media (max-width: 768px) {
+  .profileHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .profileAvatar img,
+  .profileAvatar .avatarPlaceholder {
+    width: 72px;
+    height: 72px;
+    font-size: 28px;
+  }
+
+  .profileName {
+    font-size: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .profileInfo {
+    width: 100%;
+  }
+
+  .profileStats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 16px;
+    margin: 10px 0;
+  }
+
+  .profileStats span,
+  .profileStats .profileStatLink {
+    margin-right: 0;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .profileResponse {
+    font-size: 13px;
+  }
+
+  .profileAbout {
+    font-size: 13px;
+  }
+
+  .profileLocation,
+  .profileMemberSince,
+  .profileCompany,
+  .profileLanguages {
+    font-size: 13px;
+  }
+
+  .profileTrustScore {
+    justify-content: center;
+  }
+
+  .profileSocialLinks {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .profileSocialLinks a {
+    margin-right: 0;
+  }
+
+  .profileFollowBtn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .profileEditBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  .profileHeader {
+    padding: 16px 12px;
+    gap: 12px;
+  }
+
+  .profileAvatar img,
+  .profileAvatar .avatarPlaceholder {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+
+  .profileName {
+    font-size: 18px;
+  }
+
+  .profileStats {
+    gap: 4px 12px;
+  }
+
+  .profileStats span,
+  .profileStats .profileStatLink {
+    font-size: 12px;
+  }
+}
