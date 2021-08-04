@@ -1,0 +1,908 @@
+/* =============================================
+   EditProfile – two-column layout (ep = edit-profile)
+   ============================================= */
+
+/* ── Page layout ── */
+.editProfilePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--olx-content-padding, 24px);
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   Crop Modal
+   ══════════════════════════════════════════ */
+.epCropModal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 24px;
+}
+
+.epCropContainer {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.epCropHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--olx-border, #e7e9e9);
+}
+
+.epCropHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--olx-primary, #002f34);
+}
+
+.epCropCloseBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.epCropCloseBtn:hover {
+  background: #f0f4f5;
+  color: #002f34;
+}
+
+.epCropArea {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  background: #1a1a1a;
+}
+
+.epCropControls {
+  padding: 16px 20px 8px;
+}
+
+.epCropZoomLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--olx-text, #002f34);
+}
+
+.epCropZoomSlider {
+  flex: 1;
+  height: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--olx-border, #e7e9e9);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.epCropZoomSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--olx-primary, #002f34);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.epCropZoomSlider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--olx-primary, #002f34);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.epCropActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 20px 16px;
+}
+
+/* ── Custom crop preview (no external library) ── */
+.epCropPreview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.epCropPreview:active {
+  cursor: grabbing;
+}
+
+.epCropOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Semi-transparent mask with a circular hole */
+.epCropOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  mask-image: radial-gradient(circle 130px at center, transparent 129px, black 130px);
+  -webkit-mask-image: radial-gradient(circle 130px at center, transparent 129px, black 130px);
+}
+
+.epCropCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 520px) {
+  .epCropModal {
+    padding: 12px;
+  }
+
+  .epCropArea {
+    height: 280px;
+  }
+
+  .epCropOverlay::before {
+    mask-image: radial-gradient(circle 100px at center, transparent 99px, black 100px);
+    -webkit-mask-image: radial-gradient(circle 100px at center, transparent 99px, black 100px);
+  }
+
+  .epCropCircle {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* ── Grid: Edit Profile on left, sidebar cards stacked on right ── */
+.epGrid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Left column: takes up most of the space */
+.epGrid > .epCard:first-child {
+  flex: 1.15;
+  min-width: 0;
+}
+
+/* Right column: sidebar with stacked cards */
+.epSidebar {
+  flex: 0.85;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 24px;
+}
+
+/* ── Card container ── */
+.epCard {
+  width: 100%;
+  padding: 28px 24px;
+  background: #fff;
+  border: 1px solid var(--olx-border, #e7e9e9);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 47, 52, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar cards: slightly tighter padding */
+.epSidebar .epCard {
+  padding: 22px 20px;
+}
+
+.epCardVerification {
+  border-left: 3px solid #1da1f2;
+}
+
+.epCardInfo {
+  background: var(--olx-bg-light, #f7f9f9);
+  border: 1px solid #e7e9e9;
+}
+
+.epCardTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--olx-primary, #002f34);
+}
+
+.epCardSubtitle {
+  margin: 0 0 14px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--olx-primary, #002f34);
+}
+
+.epVerifiedBadge {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Account info card ── */
+.epInfoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--olx-border, #e7e9e9);
+}
+
+.epInfoRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.epInfoRow:first-child {
+  padding-top: 0;
+}
+
+.epInfoLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--olx-text-muted, #7f9799);
+  white-space: nowrap;
+  margin-right: 12px;
+}
+
+.epInfoValue {
+  font-size: 12.5px;
+  color: var(--olx-text, #002f34);
+  text-align: right;
+  word-break: break-all;
+}
+
+.epInfoMono {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11.5px;
+  color: #888;
+}
+
+/* ── Form structure ── */
+.epForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.epField {
+  margin-bottom: 16px;
+}
+
+.epLabel {
+  display: block;
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-text, #002f34);
+}
+
+.epLabelOptional {
+  font-weight: 400;
+  color: #999;
+  font-size: 12px;
+}
+
+.epLabelRequired {
+  color: #c62828;
+  font-weight: 700;
+}
+
+.epHintError {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #c62828;
+  font-weight: 500;
+}
+
+.epUploadBtnRequired {
+  border-color: #c62828;
+  border-style: dashed;
+}
+
+.epInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--olx-border, #e7e9e9);
+  border-radius: var(--olx-radius, 4px);
+  font-size: 16px;
+  color: var(--olx-text, #002f34);
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.epInput:focus {
+  border-color: var(--olx-accent, #23e5db);
+}
+
+.epInput::placeholder {
+  color: var(--olx-text-muted, #7f9799);
+}
+
+.epTextarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+/* ── Location row (state + city side by side) ── */
+.epLocationRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.epLocationRow select {
+  width: 100%;
+}
+
+/* ── Select input styling ── */
+select.epInput {
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  background: #fff;
+}
+
+.epHiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── Buttons (all scoped, no conflicts) ── */
+.epBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.epBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.epBtnLarge {
+  padding: 12px 24px;
+  min-height: 48px;
+  font-size: 16px;
+  border-radius: var(--olx-radius, 4px);
+}
+
+.epBtnSmall {
+  padding: 6px 16px;
+  min-height: 32px;
+  font-size: 13px;
+}
+
+.epBtnRound {
+  border-radius: 20px;
+}
+
+.epBtnPrimary {
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+}
+.epBtnPrimary:hover:not(:disabled) {
+  background: var(--olx-primary-hover, #00464d);
+}
+
+.epBtnAccent {
+  background: #1da1f2;
+  color: #fff;
+}
+.epBtnAccent:hover:not(:disabled) {
+  background: #0d8bd9;
+}
+
+.epBtnDanger {
+  background: transparent;
+  color: #c62828;
+  border-color: #c62828;
+}
+.epBtnDanger:hover:not(:disabled) {
+  background: #ffebee;
+}
+
+/* ── Profile Picture Section ── */
+.epAvatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--olx-border, #e7e9e9);
+}
+
+.epAvatarWrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 12px;
+  padding: 0;
+  border: 3px solid var(--olx-border, #e7e9e9);
+  background: var(--olx-bg, #ebeeef);
+  transition: border-color 0.2s ease;
+}
+
+.epAvatarWrap:hover,
+.epAvatarWrap:focus-visible {
+  border-color: var(--olx-accent, #23e5db);
+}
+
+.epAvatarImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.epAvatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.epAvatarOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.epAvatarWrap:hover .epAvatarOverlay,
+.epAvatarWrap:focus-visible .epAvatarOverlay {
+  opacity: 1;
+}
+
+.epAvatarActions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.epHintMuted {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--olx-text-muted, #7f9799);
+}
+
+.epHintAccent {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--olx-accent, #23e5db);
+  font-weight: 600;
+}
+
+/* ── Verification Section ── */
+.verificationDescription {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.verificationNote {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ── Status cards ── */
+.verificationStatusCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+
+.verificationStatusCard strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.verificationStatusCard p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #555;
+}
+
+.verificationStatusIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.verificationApproved {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+}
+.verificationApproved strong {
+  color: #2e7d32;
+}
+
+.verificationPending {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+}
+.verificationPending strong {
+  color: #f57f17;
+}
+
+.verificationRejected {
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+}
+.verificationRejected strong {
+  color: #c62828;
+}
+
+.verificationRejectedIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #c62828;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.verificationCooldownText {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #b77800;
+}
+
+.verificationPrivacyNote {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #558b2f;
+  font-style: italic;
+}
+
+.verificationSubmittedDate {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #b77800;
+  font-weight: 500;
+}
+
+/* ── Actions row ── */
+.verificationActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.verificationCooldownBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #fff3e0;
+  border: 1px solid #ffe082;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e65100;
+}
+
+/* ── Verification form ── */
+.epVerificationForm {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--olx-border, #e7e9e9);
+}
+
+.epVerificationForm .epField {
+  margin-bottom: 14px;
+}
+
+.epVerificationForm .epBtn {
+  width: 100%;
+}
+
+/* ── ID preview ── */
+.epIdPreview {
+  position: relative;
+  display: inline-block;
+  max-width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  margin-top: 4px;
+}
+
+.epIdPreview img {
+  width: 100%;
+  display: block;
+}
+
+.epIdPreviewRemove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.epIdPreviewRemove:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ── Upload button (dashed) ── */
+.epUploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--olx-bg-light, #f7f9f9);
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--olx-text, #002f34);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  margin-top: 4px;
+}
+
+.epUploadBtn:hover {
+  background: var(--olx-bg, #ebeeef);
+  border-color: #aaa;
+}
+
+/* ══════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════ */
+
+/* Tablet: tighter spacing, keep 2-col */
+@media (max-width: 960px) {
+  .epGrid {
+    gap: 16px;
+  }
+
+  .epGrid > .epCard:first-child {
+    flex: 1;
+  }
+
+  .epSidebar {
+    flex: 1;
+    gap: 16px;
+    position: static;
+  }
+
+  .epCard {
+    padding: 22px 18px;
+  }
+}
+
+/* Mobile: single column, all cards stacked */
+@media (max-width: 768px) {
+  .editProfilePage {
+    padding: var(--olx-content-padding-mobile, 16px);
+    padding-bottom: 24px;
+  }
+
+  .epGrid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .epSidebar {
+    gap: 16px;
+  }
+
+  .epCard {
+    padding: 20px 16px;
+  }
+
+  .epCardTitle {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .epAvatarSection {
+    padding: 12px 0 16px;
+    margin-bottom: 14px;
+  }
+
+  .epAvatarWrap {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-width: 2px;
+  }
+
+  .epAvatarPlaceholder {
+    font-size: 30px;
+  }
+
+  .epAvatarActions {
+    gap: 6px;
+  }
+
+  .epField {
+    margin-bottom: 14px;
+  }
+
+  .epLabel {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  .epInput {
+    font-size: 15px;
+    padding: 9px 10px;
+  }
+
+  .epSectionTitle {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .epBtnLarge {
+    padding: 10px 20px;
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .epInfoRow {
+    padding: 8px 0;
+  }
+
+  .epInfoLabel {
+    font-size: 12px;
+  }
+
+  .epInfoValue {
+    font-size: 12px;
+  }
+
+  .verificationActions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .epLocationRow {
+    grid-template-columns: 1fr;
+  }
+
+  .verificationStatusCard {
+    padding: 12px;
+  }
+
+  .verificationStatusCard strong {
+    font-size: 13px;
+  }
+
+  .verificationStatusCard p {
+    font-size: 12px;
+  }
+
+  .epCheckboxRow {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editProfilePage {
+    padding: 12px;
+    padding-bottom: 20px;
+  }
+
+  .epCard {
+    padding: 16px 12px;
+    border-radius: 8px;
+  }
+
+  .epAvatarWrap {
+    width: 70px;
+    height: 70px;
+  }
+
+  .epAvatarPlaceholder {
+    font-size: 26px;
+  }
+}
