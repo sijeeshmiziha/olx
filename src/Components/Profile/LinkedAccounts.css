@@ -1,0 +1,101 @@
+.linkedAccountsSection {
+  margin-top: 24px;
+}
+
+.linkedAccountsSection h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #002f34;
+}
+
+.linkedAccountsHint {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.linkedAccountsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkedAccountItem {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.linkedAccountItem:last-child {
+  border-bottom: none;
+}
+
+.linkedAccountName {
+  font-weight: 600;
+  min-width: 140px;
+  color: #002f34;
+}
+
+.linkedAccountStatus {
+  font-size: 14px;
+  color: #666;
+}
+
+.linkedAccountStatus.linked {
+  color: #0a6b4a;
+  font-weight: 500;
+}
+
+.linkedAccountLink,
+.linkedAccountUnlink {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+}
+
+.linkedAccountLink {
+  background: #002f34;
+  color: #fff;
+}
+
+.linkedAccountLink:hover:not(:disabled) {
+  background: #00464d;
+}
+
+.linkedAccountUnlink {
+  background: transparent;
+  color: #c62828;
+  border: 1px solid #c62828;
+}
+
+.linkedAccountUnlink:hover:not(:disabled) {
+  background: #ffebee;
+}
+
+.linkedAccountLink:disabled,
+.linkedAccountUnlink:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .linkedAccountItem {
+    gap: 8px;
+  }
+  .linkedAccountName {
+    min-width: auto;
+    flex: 1 1 100%;
+  }
+  .linkedAccountLink,
+  .linkedAccountUnlink {
+    flex: 1;
+    text-align: center;
+  }
+}
