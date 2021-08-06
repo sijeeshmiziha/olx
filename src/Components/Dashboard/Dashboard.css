@@ -1,0 +1,391 @@
+/* Dashboard tabs */
+.dashboardTabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--olx-border);
+  margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dashboardTabs.dashboardTabsSub {
+  margin-bottom: 16px;
+}
+
+.dashboardTab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--olx-text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dashboardTab:hover {
+  color: var(--olx-primary);
+}
+
+.dashboardTab.active {
+  color: var(--olx-primary);
+  border-bottom-color: var(--olx-primary);
+}
+
+.dashboardContent {
+  min-height: 200px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--olx-text-muted);
+}
+
+.emptyState p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+/* Ads grid – CSS Grid, 4-col desktop, responsive */
+.myAdsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.myAdsGrid .dashboardCard {
+  min-width: 0;
+}
+
+.myAdsGrid .dashboardCard .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.myAdsGrid .dashboardCard .cardImageWrap {
+  flex: 0 0 auto;
+}
+
+.myAdsGrid .dashboardCard .cardContent {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.myAdsCardWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--olx-radius-card, 4px);
+  border: 1px solid var(--olx-border, #e7e9e9);
+  box-shadow: var(--olx-card-shadow, 0 1px 4px rgba(0, 47, 52, 0.08));
+  overflow: hidden;
+}
+
+/* Remove the card's own border/shadow since the wrapper handles it */
+.myAdsCardWrap .card {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.myAdsCardFooter {
+  padding: 8px 12px 10px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafcfc;
+  flex: 0 0 auto;
+}
+
+.myAdsCardActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Ensure the draft badge overlays over the card image area */
+.myAdsCardWrap > .myAdsDraftBadge {
+  position: absolute;
+  z-index: 3;
+}
+
+.myAdsBoostBtn {
+  padding: 6px 14px;
+  font-size: 13px;
+  background: var(--olx-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--olx-radius);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.myAdsBoostBtn:hover {
+  background: var(--olx-primary-hover);
+}
+
+.myAdsRepostBtn {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 13px;
+  background: var(--olx-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--olx-radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.myAdsRepostBtn:hover {
+  background: var(--olx-primary-hover);
+  color: #fff;
+}
+
+.myAdsCardStats {
+  font-size: 12px;
+  color: var(--olx-text-muted);
+  margin-bottom: 6px;
+}
+
+.myAdsCardStats span + span {
+  margin-left: 12px;
+}
+
+/* ── Inline status bar (pending, rejected, flagged) ── */
+.myAdsStatusBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.myAdsStatusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.myAdsStatusBar--pending {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.myAdsStatusBar--pending .myAdsStatusDot {
+  background: #ff9800;
+}
+
+.myAdsStatusBar--rejected {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.myAdsStatusBar--rejected .myAdsStatusDot {
+  background: #ef5350;
+}
+
+.myAdsStatusBar--flagged {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.myAdsStatusBar--flagged .myAdsStatusDot {
+  background: #ef5350;
+}
+
+/* ── Request Featured button ── */
+.myAdsRequestFeaturedBtn {
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 13px;
+  background: linear-gradient(135deg, #ff8f00 0%, #ff6f00 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--olx-radius, 4px);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.myAdsRequestFeaturedBtn:hover {
+  background: linear-gradient(135deg, #ff6f00 0%, #e65100 100%);
+  transform: translateY(-1px);
+}
+
+/* ── Featured awaiting approval ── */
+.myAdsFeaturedPendingBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e65100;
+  background: #fff8e1;
+  border-radius: 4px;
+  border: 1px solid #ffe082;
+}
+
+.myAdsFeaturedClock {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── Featured approved ── */
+.myAdsFeaturedApproved {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2e7d32;
+  background: #e8f5e9;
+  border-radius: 4px;
+  border: 1px solid #a5d6a7;
+}
+
+.myAdsFeaturedStar {
+  font-size: 14px;
+  color: #ffc107;
+  line-height: 1;
+}
+
+/* ── Draft styles ── */
+.myAdsDraftBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.myAdsDraftActions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.myAdsPublishDraftBtn {
+  width: 100%;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--olx-radius, 4px);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.myAdsPublishDraftBtn:hover {
+  background: linear-gradient(135deg, #1b5e20 0%, #0d3d12 100%);
+  transform: translateY(-1px);
+}
+
+.myAdsPublishDraftBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.myAdsDraftSecondaryActions {
+  display: flex;
+  gap: 6px;
+}
+
+.myAdsEditDraftBtn {
+  flex: 1;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--olx-primary, #002f34);
+  border: 1.5px solid var(--olx-border, #e0e0e0);
+  border-radius: var(--olx-radius, 4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.myAdsEditDraftBtn:hover {
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+  border-color: var(--olx-primary, #002f34);
+}
+
+.myAdsDeleteDraftBtn {
+  flex: 1;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  color: #c62828;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--olx-radius, 4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.myAdsDeleteDraftBtn:hover {
+  background: #ffebee;
+  border-color: #c62828;
+}
+
+.myAdsDeleteDraftBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .myAdsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .myAdsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .dashboardTab {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .myAdsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .dashboardTab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
