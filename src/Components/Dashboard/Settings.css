@@ -1,0 +1,141 @@
+.dashboardSettings {
+  padding: 16px 0;
+}
+
+.dashboardSettingsTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #002f34;
+  margin: 0 0 24px 0;
+}
+
+.dashboardSettingsSection {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboardSettingsSection h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #002f34;
+  margin: 0 0 12px 0;
+}
+
+.dashboardSettingsSection label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #002f34;
+  margin: 8px 0 4px 0;
+}
+
+.dashboardSettingsSection input {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.dashboardSettingsSection button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #002f34;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dashboardSettingsSection button:hover:not(:disabled) {
+  background: #00464d;
+}
+
+.dashboardSettingsSection button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.settingsNotifPrefs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settingsNotifPrefs label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.settingsNotifPrefs input[type='checkbox'] {
+  width: auto;
+  max-width: none;
+}
+
+.settingsError {
+  color: #c62828;
+  font-size: 13px;
+  margin: 8px 0 0 0;
+}
+
+.settingsHint {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 12px 0;
+}
+
+.settingsDeleteBtn {
+  background: #c62828 !important;
+}
+
+.settingsDeleteBtn:hover:not(:disabled) {
+  background: #b71c1c !important;
+}
+
+.settingsExportBtn {
+  margin-top: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olx-primary);
+  background: #fff;
+  border: 2px solid var(--olx-primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.settingsExportBtn:hover {
+  background: var(--olx-bg-light);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dashboardSettingsSection input {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardSettingsTitle {
+    font-size: 18px;
+  }
+  .dashboardSettingsSection {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+  .dashboardSettingsSection h3 {
+    font-size: 15px;
+  }
+  .dashboardSettingsSection button,
+  .settingsExportBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
