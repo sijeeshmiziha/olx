@@ -1,0 +1,438 @@
+/* ═══════════════════════════════════════════════════
+   OFFERS PAGE — Next-Gen Premium UI
+   ═══════════════════════════════════════════════════ */
+
+.offersPage {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ── Header ── */
+.offersPage__header {
+  margin-bottom: 24px;
+}
+
+.offersPage__headerTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.offersPage__title {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #002f34;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.offersPage__pendingBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e65100;
+  background: linear-gradient(135deg, #fff8e1, #fff3e0);
+  border: 1px solid #ffe082;
+  padding: 3px 10px;
+  border-radius: 50px;
+  animation: badgePop 0.4s ease;
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.offersPage__subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #8a9fa3;
+  font-weight: 400;
+}
+
+.offersPage__count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #566a6e;
+  background: #f0f4f5;
+  padding: 6px 14px;
+  border-radius: 50px;
+  flex-shrink: 0;
+}
+
+/* ── Stats ── */
+.offersPage__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.offersPage__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 8px;
+  border-radius: 14px;
+  background: #f8fafb;
+  border: 1px solid rgba(0, 47, 52, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.offersPage__stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.offersPage__statValue {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.offersPage__statLabel {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.offersPage__stat--pending .offersPage__statValue { color: #e65100; }
+.offersPage__stat--pending .offersPage__statLabel { color: #f57c00; }
+.offersPage__stat--pending { border-color: #ffe0b2; }
+
+.offersPage__stat--accepted .offersPage__statValue { color: #2e7d32; }
+.offersPage__stat--accepted .offersPage__statLabel { color: #43a047; }
+.offersPage__stat--accepted { border-color: #c8e6c9; }
+
+.offersPage__stat--countered .offersPage__statValue { color: #1565c0; }
+.offersPage__stat--countered .offersPage__statLabel { color: #1e88e5; }
+.offersPage__stat--countered { border-color: #bbdefb; }
+
+.offersPage__stat--rejected .offersPage__statValue { color: #c62828; }
+.offersPage__stat--rejected .offersPage__statLabel { color: #e53935; }
+.offersPage__stat--rejected { border-color: #ffcdd2; }
+
+/* ── Filters ── */
+.offersPage__filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.offersPage__filters::-webkit-scrollbar {
+  display: none;
+}
+
+.offersPage__filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1.5px solid #e4eaeb;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #566a6e;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.offersPage__filterBtn:hover {
+  border-color: #c0d0d3;
+  background: #f8fafb;
+}
+
+.offersPage__filterBtn--active {
+  border-color: #002f34;
+  background: #002f34;
+  color: #fff;
+}
+
+.offersPage__filterBtn--active:hover {
+  background: #004a52;
+  border-color: #004a52;
+}
+
+.offersPage__filterCount {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 50px;
+  background: rgba(0, 47, 52, 0.08);
+  color: inherit;
+}
+
+.offersPage__filterBtn--active .offersPage__filterCount {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Action Banner ── */
+.offersPage__actionBanner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff8e1, #fff3e0);
+  border: 1px solid #ffe082;
+  animation: bannerSlideIn 0.4s ease;
+}
+
+@keyframes bannerSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.offersPage__actionBannerIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(230, 81, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #e65100;
+}
+
+.offersPage__actionBannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.offersPage__actionBannerText strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #002f34;
+}
+
+.offersPage__actionBannerText span {
+  font-size: 13px;
+  color: #8a6d42;
+}
+
+/* ── List ── */
+.offersPage__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Empty State ── */
+.offersPage__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  animation: emptyFadeIn 0.5s ease;
+}
+
+.offersPage__empty--small {
+  padding: 40px 24px;
+}
+
+@keyframes emptyFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.offersPage__emptyIcon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f7f8, #e8eff0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #b0c2c5;
+}
+
+.offersPage__emptyTitle {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #002f34;
+}
+
+.offersPage__emptyText {
+  margin: 0;
+  font-size: 14px;
+  color: #8a9fa3;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════
+   OFFERS TABS (legacy support)
+   ═══════════════════════════════════════════════════ */
+
+.offersTabs {
+  display: flex;
+  gap: 4px;
+  background: #f0f4f5;
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.offersTab {
+  flex: 1;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #566a6e;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.offersTab:hover {
+  color: #002f34;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.offersTab.active {
+  color: #002f34;
+  background: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .offersPage__title {
+    font-size: 22px;
+  }
+
+  .offersPage__stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .offersPage__stat {
+    padding: 12px 6px;
+    border-radius: 12px;
+  }
+
+  .offersPage__statValue {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .offersPage__title {
+    font-size: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .offersPage__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offersPage__stat {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .offersPage__statValue {
+    font-size: 18px;
+  }
+
+  .offersPage__filterBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .offersPage__actionBanner {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .offersPage__actionBannerIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .offersPage__actionBannerText strong {
+    font-size: 13px;
+  }
+
+  .offersPage__actionBannerText span {
+    font-size: 12px;
+  }
+
+  .offersPage__empty {
+    padding: 40px 16px;
+  }
+
+  .offersPage__emptyIcon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .offersPage__emptyIcon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .offersPage__emptyTitle {
+    font-size: 17px;
+  }
+
+  .offersTabs {
+    gap: 2px;
+    padding: 3px;
+    border-radius: 12px;
+  }
+
+  .offersTab {
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 9px;
+  }
+}
+
+/* ── Old class compat ── */
+.offersPageHeader {
+  margin-bottom: 20px;
+}
+
+.offersPageHeader h2 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #002f34;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #8a9fa3;
+  font-size: 14px;
+}
