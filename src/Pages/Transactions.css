@@ -1,0 +1,158 @@
+.transactionsPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.transactionsTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.transactionsTabs button {
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.transactionsTabs button.active {
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+  border-color: var(--olx-primary);
+}
+
+.transactionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transactionsItem {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.transactionsItemImage {
+  width: 80px;
+  height: 80px;
+  background: #f0f4f5;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.transactionsItemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.transactionsItemImage span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #7f9799;
+}
+
+.transactionsItemBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.transactionsItemTitle {
+  font-weight: 600;
+  color: var(--olx-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.transactionsItemTitle:hover {
+  text-decoration: underline;
+}
+
+.transactionsItemMeta,
+.transactionsItemAmount {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.transactionsItemStatus {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-right: 8px;
+}
+
+.transactionsItemStatus--completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.transactionsItemStatus--cancelled {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.transactionsItemStatus--initiated,
+.transactionsItemStatus--in_progress {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.transactionsItemDate {
+  font-size: 12px;
+  color: #7f9799;
+}
+
+.transactionsEmpty {
+  text-align: center;
+  color: #7f9799;
+  padding: 48px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .transactionsPage {
+    padding: 16px;
+  }
+  .transactionsTabs {
+    flex-wrap: wrap;
+  }
+  .transactionsTabs button {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .transactionsPage {
+    padding: 12px;
+  }
+  .transactionsItem {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .transactionsItemImage {
+    width: 100%;
+    height: 160px;
+  }
+  .transactionsTabs {
+    gap: 6px;
+  }
+  .transactionsTabs button {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
