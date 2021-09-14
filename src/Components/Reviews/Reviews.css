@@ -1,0 +1,173 @@
+.reviewModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.reviewModal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.reviewModal h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #002f34;
+}
+
+.reviewModalProduct {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.reviewModal label {
+  display: block;
+  margin: 12px 0 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #002f34;
+}
+
+.reviewStars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.reviewStarBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  color: #ddd;
+}
+
+.reviewStarBtn span.filled {
+  color: #ffc107;
+}
+
+.reviewModal textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.reviewModalActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.reviewModalActions button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.reviewModalActions button[type='button'] {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.reviewModalActions button[type='submit'] {
+  background: #002f34;
+  color: #fff;
+}
+
+.sellerRatingWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+.sellerRatingStars {
+  color: #ffc107;
+  letter-spacing: 1px;
+}
+
+.reviewListItem {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.reviewListItem:last-child {
+  border-bottom: none;
+}
+
+.reviewListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.reviewListName {
+  font-weight: 600;
+  color: #002f34;
+}
+
+.reviewListStars {
+  color: #ffc107;
+  font-size: 14px;
+}
+
+.reviewListComment {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.reviewListDate {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .reviewModal {
+    padding: 16px;
+  }
+  .reviewModal h3 {
+    font-size: 17px;
+  }
+  .reviewStarBtn {
+    font-size: 24px;
+  }
+  .reviewModalActions {
+    flex-direction: column;
+  }
+  .reviewModalActions button {
+    width: 100%;
+    text-align: center;
+  }
+  .reviewListHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
