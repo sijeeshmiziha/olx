@@ -1,0 +1,323 @@
+.sellerCard {
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  background: #fff;
+}
+
+.sellerCardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #002f34;
+  margin: 0 0 12px 0;
+}
+
+.sellerCardBody p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #002f34;
+}
+
+.sellerCardName {
+  font-weight: 600;
+}
+
+.sellerCardMember {
+  font-size: 12px;
+  color: #666;
+}
+
+.sellerCardLocation {
+  font-size: 13px !important;
+  color: #444 !important;
+}
+
+.sellerCardCompany {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #002f34 !important;
+}
+
+.sellerCardLanguages {
+  font-size: 12px !important;
+  color: #666 !important;
+  font-style: italic;
+}
+
+.sellerCardPhone {
+  margin: 8px 0;
+}
+
+.sellerCardShowPhone {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #002f34;
+  background: #f0f4f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sellerCardShowPhone:hover {
+  background: #ebeeef;
+}
+
+.sellerCardPhoneValue {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.sellerCardPhoneUpgrade {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.sellerCardWhatsApp {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #25d366;
+  text-decoration: none;
+}
+
+.sellerCardWhatsApp:hover {
+  text-decoration: underline;
+}
+
+.sellerCardActions {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sellerCardProfileLinks {
+  display: flex;
+  gap: 8px;
+}
+
+.sellerCardProfileLink {
+  flex: 1;
+  display: inline-block;
+  padding: 10px 12px;
+  color: #002f34;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  background: #f0f4f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.sellerCardProfileLink:hover {
+  background: #e4e8e9;
+  text-decoration: none;
+}
+
+.sellerCardChatBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #002f34;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sellerCardChatBtn:hover:not(:disabled) {
+  background: #00464d;
+}
+
+.sellerCardChatBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.sellerCardOfferBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  color: #002f34;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sellerCardOfferBtn:hover {
+  background: #f0f4f5;
+}
+
+.sellerCardBlock {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  text-align: center;
+  background: transparent;
+  color: #8b8b8b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.sellerCardBlock:hover:not(:disabled) {
+  color: var(--olx-error, #c62828);
+  background: #fef2f2;
+}
+
+.sellerCardHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sellerCardAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sellerCardVerified {
+  color: #23e5db;
+  margin-left: 4px;
+}
+
+.sellerCardBadge {
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.sellerCardBadgeLevel {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #7f9799;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.sellerCardTrust {
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.sellerCardTrustLabel {
+  display: block;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.sellerCardTrustBar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+  display: inline-block;
+  width: 80px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+
+.sellerCardTrustFill {
+  height: 100%;
+  background: var(--olx-primary, #002f34);
+  border-radius: 3px;
+}
+
+.sellerCardTrustValue {
+  font-weight: 600;
+  color: #002f34;
+}
+
+.sellerCardResponse,
+.sellerCardStats,
+.sellerCardFollowers {
+  font-size: 12px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.sellerCardFollowBtn {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #002f34;
+  background: #f0f4f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.sellerCardFollowBtn:hover:not(:disabled) {
+  background: #e7e9e9;
+}
+
+.sellerCardFollowBtn:disabled {
+  opacity: 0.7;
+}
+
+.sellerCardSocial {
+  margin: 6px 0;
+}
+
+.sellerCardSocialLink {
+  font-size: 13px;
+  color: #002f34;
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.sellerCardSocialLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sellerCard {
+    padding: 14px;
+  }
+  .sellerCardChatBtn,
+  .sellerCardOfferBtn {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sellerCard {
+    padding: 12px;
+    border-radius: 6px;
+  }
+  .sellerCardAvatar {
+    width: 40px;
+    height: 40px;
+  }
+  .sellerCardTitle {
+    font-size: 14px;
+  }
+  .sellerCardProfileLinks {
+    flex-direction: column;
+  }
+  .sellerCardBlock {
+    font-size: 12px;
+  }
+}
