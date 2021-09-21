@@ -1,0 +1,161 @@
+.followersPage {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.followersPageBack {
+  background: none;
+  border: none;
+  color: #002f34;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.followersPageBack:hover {
+  text-decoration: underline;
+}
+
+.followersPageHeader h1 {
+  margin: 0 0 16px 0;
+  font-size: 22px;
+  color: #002f34;
+}
+
+.followersPageTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.followersPageTab {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #002f34;
+  font-weight: 500;
+}
+
+.followersPageTab:hover {
+  background: #f0f4f5;
+}
+
+.followersPageTab.active {
+  background: #002f34;
+  color: #fff;
+}
+
+.followersPageEmpty {
+  text-align: center;
+  color: #7f9799;
+  padding: 48px 0;
+}
+
+.followersPageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.followersPageItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.followersPageItemAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e0e0e0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #666;
+  font-weight: 600;
+}
+
+.followersPageItemAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.followersPageItemBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.followersPageItemName {
+  display: block;
+  font-weight: 600;
+  color: #002f34;
+  text-decoration: none;
+}
+
+.followersPageItemName:hover {
+  text-decoration: underline;
+}
+
+.followersPageItemLocation {
+  font-size: 13px;
+  color: #7f9799;
+}
+
+.followersPageFollowBtn {
+  padding: 8px 16px;
+  border: 1px solid #002f34;
+  background: #fff;
+  color: #002f34;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.followersPageFollowBtn.following {
+  background: #002f34;
+  color: #fff;
+}
+
+.followersPageFollowBtn:hover {
+  opacity: 0.9;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .followersPage {
+    padding: 16px;
+  }
+  .followersPageHeader h1 {
+    font-size: 18px;
+  }
+  .followersPageTab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .followersPage {
+    padding: 12px;
+  }
+  .followersPageItem {
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .followersPageItemAvatar {
+    width: 40px;
+    height: 40px;
+  }
+  .followersPageFollowBtn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
