@@ -1,0 +1,195 @@
+.watchlistBtn {
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #fff;
+  color: #002f34;
+  border: 1px solid #002f34;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.watchlistBtn:hover {
+  background: #f0f4f5;
+}
+
+.watchlistBtnActive {
+  background: #002f34;
+  color: #fff;
+  border-color: #002f34;
+}
+
+.watchlistBtnActive:hover {
+  background: #00464d;
+}
+
+.watchlistBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.watchlistOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.watchlistModal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 360px;
+  width: 90%;
+}
+
+.watchlistModal h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #002f34;
+}
+
+.watchlistModalProduct {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.watchlistModalPrice {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.watchlistModal label {
+  display: block;
+  margin: 12px 0 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.watchlistModal input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.watchlistModalActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.watchlistModalActions button {
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.watchlistModalActions button[type='button'] {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.watchlistModalActions button[type='submit'] {
+  background: #002f34;
+  color: #fff;
+}
+
+.watchlistPage {
+  padding: 0;
+}
+
+.watchlistPage h2 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #002f34;
+}
+
+.watchlistGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.watchlistCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--olx-border, #e0e0e0);
+  border-radius: var(--olx-radius-card, 8px);
+  box-shadow: var(--olx-card-shadow, 0 2px 4px rgba(0, 47, 52, 0.08));
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  min-width: 0;
+}
+
+.watchlistCard:hover {
+  border-color: rgba(0, 47, 52, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 47, 52, 0.12);
+}
+
+@media (max-width: 768px) {
+  .watchlistGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.watchlistCardImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.watchlistCardInfo {
+  flex: 1;
+}
+
+.watchlistCardTitle {
+  font-weight: 600;
+  color: #002f34;
+  margin: 0 0 4px 0;
+}
+
+.watchlistCardPrices {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.watchlistCardActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.watchlistCardActions button {
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #fff;
+  color: #c62828;
+  border: 1px solid #c62828;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.watchlistCardActions button:hover {
+  background: #ffebee;
+}
