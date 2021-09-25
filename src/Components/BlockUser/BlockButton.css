@@ -1,0 +1,20 @@
+.blockUserBtn {
+  padding: 6px 12px;
+  font-size: 12px;
+  background: transparent;
+  color: var(--olx-error, #c62828);
+  border: 1px solid var(--olx-error, #c62828);
+  border-radius: var(--olx-radius);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.blockUserBtn:hover:not(:disabled) {
+  background: var(--olx-error, #c62828);
+  color: #fff;
+}
+
+.blockUserBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
