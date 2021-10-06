@@ -1,0 +1,53 @@
+.adAnalytics,
+.analyticsSummary {
+  margin-bottom: 24px;
+}
+
+.adAnalytics h3,
+.analyticsSummary h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #002f34;
+}
+
+.adAnalyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.adAnalyticsCard {
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.adAnalyticsValue {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #002f34;
+}
+
+.adAnalyticsLabel {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .adAnalyticsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .adAnalyticsCard {
+    padding: 12px;
+  }
+  .adAnalyticsValue {
+    font-size: 20px;
+  }
+  .adAnalyticsLabel {
+    font-size: 12px;
+  }
+}
