@@ -1,0 +1,79 @@
+.voiceSearchWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voiceSearchBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--olx-bg-light, #f7f8f8);
+  color: var(--olx-primary);
+  border: 1px solid var(--olx-border);
+  border-radius: var(--olx-radius);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.voiceSearchBtn:hover:not(:disabled) {
+  background: #eee;
+  border-color: var(--olx-primary);
+}
+
+.voiceSearchBtn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.voiceSearchBtnIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.voiceSearchBtn--listening .voiceSearchBtnIcon {
+  color: var(--olx-primary);
+}
+
+.voiceSearchBtnLabel {
+  white-space: nowrap;
+}
+
+/* Sound wave animation when listening */
+.mic-waves .mic-wave {
+  animation: mic-wave-pulse 0.8s ease-in-out infinite;
+}
+
+.mic-waves .mic-wave-1 { animation-delay: 0s; }
+.mic-waves .mic-wave-2 { animation-delay: 0.1s; }
+.mic-waves .mic-wave-3 { animation-delay: 0.2s; }
+.mic-waves .mic-wave-4 { animation-delay: 0s; }
+.mic-waves .mic-wave-5 { animation-delay: 0.1s; }
+.mic-waves .mic-wave-6 { animation-delay: 0.2s; }
+
+@keyframes mic-wave-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.voiceSearchError {
+  font-size: 12px;
+  color: var(--olx-error);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .voiceSearchBtn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .voiceSearchBtnLabel {
+    display: none;
+  }
+}
