@@ -1,0 +1,75 @@
+.mapView {
+  padding: 16px 0;
+}
+
+.mapViewList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mapViewItem {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.mapViewItemTitle {
+  font-weight: 600;
+  color: var(--olx-primary, #002f34);
+  text-decoration: none;
+  flex: 1 1 100%;
+}
+
+.mapViewItemTitle:hover {
+  text-decoration: underline;
+}
+
+.mapViewItemPrice {
+  font-weight: 500;
+  color: #002f34;
+}
+
+.mapViewItemLocation {
+  font-size: 13px;
+  color: #7f9799;
+}
+
+.mapViewItemMapLink {
+  font-size: 13px;
+  color: #002f34;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mapViewItemMapLink:hover {
+  text-decoration: underline;
+}
+
+.mapViewEmpty {
+  padding: 48px 24px;
+  text-align: center;
+  color: #7f9799;
+  background: #f7f9f9;
+  border-radius: 8px;
+}
+
+.mapViewEmpty p {
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .mapViewItem {
+    gap: 4px 10px;
+  }
+  .mapViewItemTitle {
+    font-size: 14px;
+  }
+  .mapViewItemPrice {
+    font-size: 14px;
+  }
+}

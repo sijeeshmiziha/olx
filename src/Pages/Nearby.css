@@ -1,0 +1,74 @@
+.nearbyPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.nearbyTitle {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  color: var(--olx-primary, #002f34);
+}
+
+.nearbyStatus,
+.nearbyError,
+.nearbyCoords,
+.nearbyEmpty {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--olx-text-muted, #406367);
+}
+
+.nearbyError {
+  color: var(--olx-error, #c62828);
+}
+
+.nearbyRetry {
+  background: none;
+  border: none;
+  color: var(--olx-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.nearbyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.nearbyCardWrap {
+  position: relative;
+}
+
+.nearbyDistance {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--olx-text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nearbyPage {
+    padding: 16px;
+  }
+  .nearbyTitle {
+    font-size: 20px;
+  }
+  .nearbyGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nearbyPage {
+    padding: 12px;
+  }
+  .nearbyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

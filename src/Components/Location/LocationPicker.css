@@ -1,0 +1,110 @@
+.locationPickerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.locationPickerModal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.locationPickerModal h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+}
+
+.locationPickerModal label {
+  display: block;
+  margin: 12px 0 4px 0;
+  font-size: 14px;
+}
+
+.locationPickerSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.locationPickerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.locationPickerBtn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.locationPickerBtn.cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.locationPickerBtn.submit {
+  background: #002f34;
+  color: #fff;
+}
+
+.locationPickerBtn.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.locationBanner {
+  padding: 12px 24px;
+  background: #f0f4f5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.locationBannerBtn {
+  background: none;
+  border: none;
+  color: #002f34;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nearbyAdsSection {
+  padding: 24px var(--olx-content-padding) 16px;
+  max-width: var(--olx-content-max);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .nearbyAdsSection {
+    padding: 20px var(--olx-content-padding-mobile) 16px;
+  }
+}
+
+.nearbyAdsSection h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--olx-primary);
+}
