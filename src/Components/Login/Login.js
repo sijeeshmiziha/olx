@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import { Firebase } from "../../firebase/config";
 import Logo from "../../olx-logo.png";
+import RoundLoading from "../Loading/RoundLoading";
 import "./Login.css";
 
 function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [loading,setLoading]=useState(false)
   const history = useHistory()
   const handleSubmit = (e) => {
+    setLoading(true)
     e.preventDefault();
     Firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
       history.push("/")
@@ -20,7 +23,7 @@ function Login() {
   };
   return (
     <div>
-      <div className="loginParentDiv">
+     {loading ? <RoundLoading/> : <div className="loginParentDiv">
         <img width="200px" height="200px" src={Logo} alt=""></img>
         <form onSubmit={handleSubmit}>
           <label>Email</label>
@@ -47,7 +50,7 @@ function Login() {
           <button>Login</button>
         </form>
         <Link to="/signup">Signup</Link>
-      </div>
+      </div> }
     </div>
   );
 }

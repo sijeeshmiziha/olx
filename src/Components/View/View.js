@@ -4,10 +4,10 @@ import { Firebase } from "../../firebase/config";
 import { useHistory } from "react-router";
 import "./View.css";
 function View() {
-  let { postContent } = useContext(PostContext);
+  let { postContent } = useContext(PostContext);//from the global store PostContext we can get information about desired product post that we want to show (the user is clicked item on the card)
 
-  const [userDetails, setUserDetails] = useState();
-  const history = useHistory();
+  const [userDetails, setUserDetails] = useState();//we want show the details of who is posted the add and we dont know,so we want retreive user data from firebase who is posted this add
+  const history = useHistory();//if user click the refresh of the page then PostContext data will be erased so it will throws an error so that time we want redirect this page to home page
   useEffect(() => {
     let { userId } = postContent;
     if (userId === undefined) {
@@ -36,13 +36,19 @@ function View() {
           <p>{postContent.category}</p>
           <span>{postContent.createdAt}</span>
         </div>
-        {userDetails && (
-          <div className="contactDetails">
-            <p>Seller details</p>
-            <p>{userDetails.username}</p>
-            <p>{userDetails.phone}</p>
+        <div className="productDescription">
+            <p className="p-bold">Product Description</p>
+            <p>{postContent.description}</p>
+            
           </div>
-        )}
+        {userDetails &&
+          <div className="contactDetails">
+            <p className="p-bold">Seller details</p>
+            <p>Name : {userDetails.name}</p>
+            <p>Phone : {userDetails.phone}</p>
+          </div>
+        }
+       
       </div>
     </div>
   );

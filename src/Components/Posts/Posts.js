@@ -1,63 +1,59 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import Heart from "../../assets/Heart";
 import "./Post.css";
 import { Firebase } from "../../firebase/config";
-import {PostContext }from "../../contextStore/PostContext";
-import { useHistory } from "react-router";
+import BarLoading from "../Loading/BarLoading";
+import PostCards from "../PostCards/PostCards";
+
+import { AllPostContext } from "../../contextStore/AllPostContext";
 
 function Posts() {
-  let [posts, setPosts] = useState([]);
+  const {setAllPost } = useContext(AllPostContext);
+  let [posts, setPosts] = useState([]); //for showing all posts
+  let [loading, setLoading] = useState(false);
   useEffect(() => {
-    Firebase.firestore()
+    setLoading(true);
+
+    Firebase.firestore() //retreving all posts from firebase
       .collection("products")
       .get()
       .then((snapshot) => {
-        let allPost = snapshot.docs.map((product) => {
+        let allPosts = snapshot.docs.map((product) => {
           return {
             ...product.data(),
             id: product.id,
           };
         });
-        setPosts(allPost);
+        setPosts(allPosts); //set to post
+        setAllPost(allPosts);
+        setLoading(false);
+        
       });
-  }, []);
-  let {setPostContent}=useContext(PostContext)
-  const history=useHistory()
-
-  let quickMenuCards = posts.map((product,index) => {
-    return (
-      <div className="card" key={index} onClick={()=>{
-        setPostContent(product)
-        history.push("/view")
-      }}>
-        <div className="favorite">
-          <Heart></Heart>
-        </div>
-        <div className="image">
-          <img src={product.url} alt="" />
-        </div>
-        <div className="content">
-          <p className="rate">&#x20B9; {product.price}</p>
-          <span className="kilometer"> {product.category} </span>
-          <p className="name"> {product.name}</p>
-        </div>
-        <div className="date">
-          <span>{product.createdAt}</span>
-        </div>
-      </div>
-    );
+  }, [setAllPost]);
+  // quickMenuCards assign all cards of post item later it will be displayed
+  let quickMenuCards = posts.map((product, index) => {
+    return <PostCards product={product} index={index} />;
   });
 
   return (
     <div className="postParentDiv">
-      <div className="moreView">
-        <div className="heading">
-          <span>Quick Menu</span>
-          <span>View more</span>
+      {posts && (
+        <div className="moreView">
+          <div className="heading">
+            <span>Quick Menu</span>
+            <Link to="./viewmore">
+              {" "}
+              <span>View more</span>{" "}
+            </Link>
+          </div>
+          <div className="cards">
+            {" "}
+            {loading ? <BarLoading /> : quickMenuCards}
+          </div>
         </div>
-        <div className="cards"> {posts&&quickMenuCards}</div>
-      </div>
+      )}
       <div className="recommendations">
         <div className="heading">
           <span>Fresh recommendations</span>

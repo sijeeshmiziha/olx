@@ -5,10 +5,12 @@
 .viewParentDiv .imageShowDiv {
   padding: 16px;
   width: 70vw;
+  
 }
 .viewParentDiv .imageShowDiv img {
   width: 65vw;
-  height: 85vh;
+  height:100%;
+  object-fit: cover;
 }
 
 .viewParentDiv .rightSection {
@@ -38,13 +40,26 @@
   border: 1px solid black;
   padding: 6px;
   border-radius: 6px;
+  
 }
 
-.viewParentDiv .rightSection .contactDetails :first-child {
+.viewParentDiv .rightSection .productDescription {
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 6px;
+  margin-bottom: 2em;
+}
+
+
+.viewParentDiv .rightSection .contactDetails .productDescription :first-child {
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
   color: #002f34;
   font-weight: 400;
   padding: 0;
+}
+
+.p-bold{
+  font-weight: bolder;
 }

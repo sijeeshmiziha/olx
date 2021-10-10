@@ -4,22 +4,25 @@ import Logo from "../../olx-logo.png";
 import "./Signup.css";
 import { Firebase } from "../../firebase/config";
 import { useHistory } from "react-router";
+import SignUpLoading from "../Loading/SignUpLoading";
 
 export default function Signup() {
   const history = useHistory();
-  let [username, setUsername] = useState("");
+  let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
   let [password, setPassword] = useState("");
+  let [loading,setLoading]=useState(false)
   const handleSubmit = (e) => {
+    setLoading(true)
     e.preventDefault();
     Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        result.user.updateProfile({ displayName: username }).then(() => {
+        result.user.updateProfile({ displayName: name }).then(() => {
           Firebase.firestore().collection("users").doc(result.user.uid).set({
             id: result.user.uid,
-            username: username,
+            name: name,
             phone: phone,
           });
         });
@@ -28,18 +31,18 @@ export default function Signup() {
         history.push("/login");
       });
   };
-  return (
-    <div>
+  return (<>
+    {loading ? <SignUpLoading/> : <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo} alt=""></img>
         <form onSubmit={handleSubmit}>
-          <label>Username</label>
+          <label>Full Name</label>
           <br />
           <input
             className="input"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             name="name"
           />
           <br />
@@ -78,6 +81,7 @@ export default function Signup() {
         </form>
         <Link to="/login">Login</Link>
       </div>
-    </div>
+    </div> }
+    </>
   );
 }

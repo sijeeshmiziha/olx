@@ -13,6 +13,7 @@
     border-left-color: transparent;
     border-right-color: transparent;
     outline-color: transparent;
+    margin-bottom:35px ;
   }
   
   .uploadBtn {
@@ -29,4 +30,6 @@
     color: #002f34;
     border: 2px solid #002f34;
   }
-  
+  .centerDiv label{
+    font-weight: bold;
+  }

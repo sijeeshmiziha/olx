@@ -5,6 +5,8 @@ import Signup from '../Pages/Signup'
 import Login from '../Pages/Login'
 import CreatePost from '../Pages/CreatePost'
 import ViewPost from '../Pages/ViewPost'
+import ViewMore from '../Pages/ViewMore'
+
 
 function MainRoutes() {
     return (
@@ -24,6 +26,10 @@ function MainRoutes() {
            <Route path="/view">
                <ViewPost/>
            </Route>
+           <Route path="/viewmore">
+               <ViewMore/>
+           </Route>
+           
        </Router>
     )
 }

@@ -1,17 +1,20 @@
-import React from 'react';
-import './App.css';
-import ContextAuth from './contextStore/AuthContext';
-import ContextPost from './contextStore/PostContext';
-import MainRoutes from './Routes/MainRoutes';
+import React from "react";
+import "./App.css";
+import ContextAllPost from "./contextStore/AllPostContext";
+import ContextAuth from "./contextStore/AuthContext";
+import ContextPost from "./contextStore/PostContext";
+import MainRoutes from "./Routes/MainRoutes";
 
-function App(){
+function App() {
   return (
     <div>
       <ContextAuth>
-        <ContextPost>
-          <MainRoutes/> 
-        </ContextPost> 
-      </ContextAuth> 
+        <ContextAllPost>
+          <ContextPost>
+            <MainRoutes />
+          </ContextPost>
+        </ContextAllPost>
+      </ContextAuth>
     </div>
   );
 }
