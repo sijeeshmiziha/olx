@@ -40,7 +40,7 @@ function Banner() {
           <img src="../../../Images/banner copy.png" alt="" />
         </div>
       </div>
-     { category!==null && <DynamicPosts category={category}/>  }
+     { category!=null && <DynamicPosts category={category}/>  }
     </div>
   );
 }
