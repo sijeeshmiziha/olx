@@ -1,0 +1,94 @@
+.comparePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.comparePage h1 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: var(--olx-primary);
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.compareCard {
+  background: #fff;
+  border: 1px solid var(--olx-border);
+  border-radius: var(--olx-radius-card);
+  overflow: hidden;
+  padding: 16px;
+}
+
+.compareCardImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--olx-bg-light);
+  margin: -16px -16px 12px -16px;
+}
+
+.compareCardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compareCardTitle {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--olx-text);
+  line-height: 1.3;
+}
+
+.compareCardPrice {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--olx-primary);
+}
+
+.compareCardMeta {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: var(--olx-text-muted);
+}
+
+.compareCard a[href^="/ad/"] {
+  font-size: 14px;
+  color: var(--olx-primary);
+  text-decoration: none;
+}
+
+.compareCard a[href^="/ad/"]:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .comparePage {
+    padding: 16px;
+  }
+  .comparePage h1 {
+    font-size: 20px;
+  }
+  .compareGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparePage {
+    padding: 12px;
+  }
+  .compareGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
