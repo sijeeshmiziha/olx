@@ -8,7 +8,7 @@ function DynamicPosts({category}) {
     
     const {allPost}=useContext(AllPostContext)
     let displayCards=allPost.filter((itm)=>itm.category===category).map((product,index)=>{return(
-      <PostCards product={product} index={index} />
+      <PostCards product={product} index={index} key={index} />
     )});
     
     return (<>

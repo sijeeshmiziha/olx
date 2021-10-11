@@ -46,7 +46,7 @@ function Header() {
           <span> ENGLISH </span>
           <Arrow></Arrow>
         </div>
-        <div className="loginPage">
+        <div className="loginPage"> 
           {user ? (
             user.displayName
           ) : (
@@ -56,7 +56,7 @@ function Header() {
           )}
           <hr />
         </div>
-        {user && <span onClick={logoutHandler}>Logout</span>}
+        {user && <span onClick={logoutHandler} className="logout-span">Logout</span>}
         <Link to="/create">
           {" "}
           <div className="sellMenu">

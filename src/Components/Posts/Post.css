@@ -23,6 +23,9 @@
 
 .recommendations .cards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin:2em;
 }
 
 .moreView .cards {
@@ -34,6 +37,8 @@
 
 .recommendations {
   margin: 16px 16px 24px;
+  background-color: #ebeeef;
+  padding: 1em;
 }
 
 .recommendations .heading span {
@@ -42,4 +47,23 @@
 }
 .postParentDiv{
   padding: auto;
+}
+
+.fresh-recomendation-cards{
+  margin: 2em;
+  display: flex;
+  flex: wrap;
+  justify-content: space-evenly;
+}
+.fresh-recomendation-card{
+  display:flex;
+  flex: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 2em;
+}
+.quick-menu-cards{
+  display: inline;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }

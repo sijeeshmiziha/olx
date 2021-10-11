@@ -42,7 +42,7 @@ const Create = () => {
   return (
     <Fragment>
       <Header />
-    { loading ? <GoLoading/> :
+    { loading && <GoLoading/> }
       <div className="centerDiv">
         <label>Name</label>
         <br />
@@ -116,7 +116,7 @@ const Create = () => {
         <button className="uploadBtn" onClick={handleSubmit}>
           upload and Submit
         </button>
-      </div> }
+      </div> 
     </Fragment>
   );
 };

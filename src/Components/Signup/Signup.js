@@ -32,7 +32,7 @@ export default function Signup() {
       });
   };
   return (<>
-    {loading ? <SignUpLoading/> : <div>
+    {loading && <SignUpLoading/> } <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo} alt=""></img>
         <form onSubmit={handleSubmit}>
@@ -81,7 +81,7 @@ export default function Signup() {
         </form>
         <Link to="/login">Login</Link>
       </div>
-    </div> }
+    </div> 
     </>
   );
 }

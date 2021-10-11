@@ -14,6 +14,7 @@
     border-left-color: transparent;
     border-right-color: transparent;
     outline-color: transparent;
+    
   }
   
   .loginParentDiv button {
@@ -35,4 +36,10 @@
     justify-content: center;
     cursor: pointer;
   }
+
+  .loginParentDiv img{
+    position: top;
+    margin-bottom: 3em;
+  }
+  
   

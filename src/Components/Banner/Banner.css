@@ -35,3 +35,7 @@
     position: relative;
   }
 }
+
+.otherQuickOptions span{
+  cursor: pointer;
+}

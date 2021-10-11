@@ -21,9 +21,10 @@ function Login() {
     })
 
   };
-  return (
+  return (<>
+    {loading && <RoundLoading/> }
     <div>
-     {loading ? <RoundLoading/> : <div className="loginParentDiv">
+      <div className="loginParentDiv">
         <img width="200px" height="200px" src={Logo} alt=""></img>
         <form onSubmit={handleSubmit}>
           <label>Email</label>
@@ -31,6 +32,7 @@ function Login() {
           <input
             className="input"
             type="email"
+            placeholder="sijeesh@gmail.com"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -42,6 +44,7 @@ function Login() {
             className="input"
             type="password"
             name="password"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -50,8 +53,9 @@ function Login() {
           <button>Login</button>
         </form>
         <Link to="/signup">Signup</Link>
-      </div> }
+      </div> 
     </div>
+    </>
   );
 }
 

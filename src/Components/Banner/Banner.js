@@ -28,12 +28,12 @@ function Banner() {
             </select>
           </div>
           <div className="otherQuickOptions">
-            <span>Cars</span>
-            <span>Cameras & Lenses</span>
-            <span>Computers & Laptops</span>
-            <span>Mobile Phones</span>
-            <span>Motorcycles</span>
-            <span>Tablets</span>
+            <span onClick={()=>setCategory("Cars")} >Cars</span>
+            <span onClick={()=>setCategory("Cameras & Lenses")} >Cameras & Lenses</span>
+            <span onClick={()=>setCategory("Computers & Laptops")} >Computers & Laptops</span>
+            <span onClick={()=>setCategory("Mobile Phones")} >Mobile Phones</span>
+            <span onClick={()=>setCategory("Motorcycles")} >Motorcycles</span>
+            <span onClick={()=>setCategory("Tablets")} >Tablets</span>
           </div>
         </div>
         <div className="banner">

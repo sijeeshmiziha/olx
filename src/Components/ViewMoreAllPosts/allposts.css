@@ -1,6 +1,8 @@
 .display-all-parent{
     padding-top: 6em;
+    padding-bottom: 1em;
     margin:0 1rem;
+    background-color: #ebeeef;
 }
 
 .container-allpost{

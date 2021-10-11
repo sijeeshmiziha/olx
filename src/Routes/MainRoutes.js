@@ -8,6 +8,7 @@ import ViewPost from '../Pages/ViewPost'
 import ViewMore from '../Pages/ViewMore'
 
 
+
 function MainRoutes() {
     return (
        <Router>
@@ -29,6 +30,8 @@ function MainRoutes() {
            <Route path="/viewmore">
                <ViewMore/>
            </Route>
+           
+
            
        </Router>
     )

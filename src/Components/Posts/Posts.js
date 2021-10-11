@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import Heart from "../../assets/Heart";
 import "./Post.css";
 import { Firebase } from "../../firebase/config";
 import BarLoading from "../Loading/BarLoading";
@@ -10,33 +9,54 @@ import PostCards from "../PostCards/PostCards";
 import { AllPostContext } from "../../contextStore/AllPostContext";
 
 function Posts() {
-  const {setAllPost } = useContext(AllPostContext);
-  let [posts, setPosts] = useState([]); //for showing all posts
+  const { setAllPost } = useContext(AllPostContext);
+  let [posts, setPosts] = useState([]); //for showing all posts in Descending order of date
+  let [posts2, setPosts2] = useState([]); //for showing all posts in Ascending order of date
   let [loading, setLoading] = useState(false);
+  let [loading2,setLoading2] = useState(false)
   useEffect(() => {
     setLoading(true);
-
-    Firebase.firestore() //retreving all posts from firebase
+    setLoading2(true)
+    Firebase.firestore() //retreving all posts from firebase in descending order
       .collection("products")
+      .orderBy("createdAt", "desc")
       .get()
       .then((snapshot) => {
-        let allPosts = snapshot.docs.map((product) => {
+        let allPostsDescendingOder = snapshot.docs.map((product) => {
           return {
             ...product.data(),
             id: product.id,
           };
         });
-        setPosts(allPosts); //set to post
-        setAllPost(allPosts);
+        setPosts2(allPostsDescendingOder); //set to post
+        setAllPost(allPostsDescendingOder);
         setLoading(false);
+      });
+    Firebase.firestore() //retreving all posts from firebase in asecnding order of date
+      .collection("products")
+      .orderBy("createdAt", "asc")
+      .get()
+      .then((snapshot) => {
+        let allPostsAscendingOder = snapshot.docs.map((product) => {
+          return {
+            ...product.data(),
+            id: product.id,
+          };
+        });
+        setPosts(allPostsAscendingOder);
+        setLoading2(false)
         
       });
   }, [setAllPost]);
   // quickMenuCards assign all cards of post item later it will be displayed
   let quickMenuCards = posts.map((product, index) => {
-    return <PostCards product={product} index={index} />;
+    return(<div className="quick-menu-cards" key={index}> <PostCards product={product} index={index} /> </div>);
   });
 
+  let freshRecomendationCards = posts2.map((product, index) => { if(index<4) {
+    return (<div className="fresh-recomendation-card" key={index}> <PostCards product={product} index={index} /> </div>);}
+    return null 
+});
   return (
     <div className="postParentDiv">
       {posts && (
@@ -54,29 +74,12 @@ function Posts() {
           </div>
         </div>
       )}
-      <div className="recommendations">
+     <div className="recommendations">
         <div className="heading">
           <span>Fresh recommendations</span>
         </div>
-        <div className="cards">
-          <div className="card">
-            <div className="favorite">
-              <Heart></Heart>
-            </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>10/5/2021</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className="fresh-recomendation-cards cards">{loading2 ? <BarLoading/> : freshRecomendationCards}</div> 
+      </div> 
     </div>
   );
 }
