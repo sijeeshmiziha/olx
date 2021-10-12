@@ -1,0 +1,60 @@
+.priceHistoryBlock {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--olx-bg-light, #f7f8f8);
+  border-radius: var(--olx-radius, 4px);
+}
+
+.priceHistoryTitle {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--olx-text, #002f34);
+}
+
+.priceHistoryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.priceHistoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--olx-border, #e0e0e0);
+  font-size: 14px;
+}
+
+.priceHistoryItem:last-child {
+  border-bottom: none;
+}
+
+.priceHistoryPrice {
+  font-weight: 600;
+  color: var(--olx-primary, #002f34);
+}
+
+.priceHistoryDate {
+  color: var(--olx-text-muted, #406367);
+}
+
+.priceHistoryPrevious,
+.priceHistoryReason {
+  font-size: 12px;
+  color: #666;
+  margin-left: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .priceHistoryBlock {
+    padding: 12px;
+  }
+  .priceHistoryItem {
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 13px;
+  }
+}
