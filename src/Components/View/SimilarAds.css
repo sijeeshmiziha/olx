@@ -1,0 +1,63 @@
+.similarAds {
+  margin-top: 0;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.similarAdsTitle {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002f34;
+}
+
+.similarAdsGrid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0;
+  scrollbar-width: none;
+}
+
+.similarAdsGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.similarAdsCard {
+  flex: 0 0 220px;
+  width: 220px;
+  scroll-snap-align: start;
+  min-width: 220px;
+  max-width: 220px;
+}
+
+.similarAdsCard .card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.similarAdsCard .cardContent {
+  flex: 1 0 auto;
+  min-height: 88px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .similarAdsTitle {
+    font-size: 16px;
+  }
+  .similarAdsGrid {
+    gap: 10px;
+  }
+  .similarAdsCard {
+    flex: 0 0 180px;
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
