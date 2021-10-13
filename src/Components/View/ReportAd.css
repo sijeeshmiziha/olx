@@ -1,0 +1,150 @@
+.reportAdOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.reportAdModal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.reportAdModal h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+}
+
+.reportAdModal label {
+  display: block;
+  margin: 12px 0 4px 0;
+  font-size: 14px;
+}
+
+.reportAdSelect,
+.reportAdTextarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.reportAdTextarea {
+  resize: vertical;
+}
+
+.reportAdActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.reportAdBtn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.reportAdBtn.cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.reportAdBtn.submit {
+  background: #002f34;
+  color: #fff;
+}
+
+.safetyTips {
+  margin-top: 24px;
+  padding: 0;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.safetyTipsHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.safetyTipsHeader h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #002f34;
+}
+
+.safetyTipsToggle {
+  font-size: 18px;
+  color: #002f34;
+}
+
+.safetyTips ul {
+  margin: 0;
+  padding: 0 16px 16px 20px;
+  padding-left: 36px;
+  font-size: 13px;
+  color: #666;
+}
+
+.safetyTips li {
+  margin: 4px 0;
+}
+
+.reportAdLink {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.reportAdLink:hover {
+  color: #002f34;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .reportAdModal {
+    padding: 16px;
+  }
+  .reportAdModal h3 {
+    font-size: 16px;
+  }
+  .reportAdActions {
+    flex-direction: column;
+  }
+  .reportAdBtn {
+    width: 100%;
+    text-align: center;
+  }
+  .safetyTips ul {
+    padding-left: 24px;
+  }
+}

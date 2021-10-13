@@ -1,0 +1,34 @@
+.shareButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.shareLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.shareBtn {
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #f0f4f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #002f34;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.shareBtn:hover {
+  background: #e0e0e0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .shareButtons {
+    gap: 6px;
+  }
+}
