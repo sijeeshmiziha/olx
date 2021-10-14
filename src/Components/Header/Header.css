@@ -37,17 +37,18 @@
 .productSearch {
   width: 35em;
   height: 48px;
-  border: 2px solid #002f34;
+  margin-left: 2em;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* border: 2px solid #002f34; */
+  /* display: flex;
+  align-items: center; */
+  /* background-color: white; */
+  /* display: flex;
+  align-items: center; */
+  /* justify-content: space-between; */
 }
 
-.productSearch .input {
+/* .productSearch .input {
   width: 100%;
   height: 100%;
   display: flex;
@@ -76,7 +77,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   fill: white;
-}
+} */
 
 .language {
   height: 48px;
@@ -164,3 +165,39 @@
 .logout-span{
   cursor: pointer;
 }
+
+.dataResult-header {
+    
+  position: absolute;
+  top: 60px;
+  left: 57px;
+   width: 230px;
+   height: 150px;
+   background-color: white;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   overflow: hidden;
+   overflow-y: auto;
+ }
+ 
+ /* .dataResult-header::-webkit-scrollbar {
+   display: none;
+ } */
+ 
+ .dataResult-header .dataItem-header {
+   width: 100%;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   color: black;
+   font-size: smaller;
+ }
+ 
+ .dataItem-header p {
+   margin-left: 10px;
+ }
+
+ 
+ .dataResult-header  :hover {
+   background-color: #ebeeef;
+ }
+ 
