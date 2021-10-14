@@ -2,7 +2,7 @@
   position: relative;
 }
 .searchInputs {
-   
+    height: 48px;
     display: flex;
   }
   
@@ -54,7 +54,7 @@
     width: 30em;
     height: 200px;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: #00000059 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
   }
