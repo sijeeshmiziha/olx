@@ -1,0 +1,45 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ──────────────────────────────────────────────
+    // Ad images: public read; auth users can upload only to paths starting with their uid (max 5MB, images only)
+    // ──────────────────────────────────────────────
+    match /image/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*')
+                   && fileName.matches(request.auth.uid + '_.*');
+    }
+
+    // ──────────────────────────────────────────────
+    // Chat attachments: auth users only (max 5MB, images only to prevent phishing/SVG XSS)
+    // ──────────────────────────────────────────────
+    match /chat/{fileName} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*')
+                   && fileName.matches(request.auth.uid + '_.*');
+    }
+
+    // ──────────────────────────────────────────────
+    // Profile pictures & verification docs: public read; owner can upload (max 5MB, images only)
+    // ──────────────────────────────────────────────
+    match /profiles/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.uid == userId
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // ──────────────────────────────────────────────
+    // Default: deny everything else
+    // ──────────────────────────────────────────────
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

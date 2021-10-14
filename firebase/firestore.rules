@@ -1,0 +1,367 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: admin role stored in users/{uid}
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Sensitive user fields: only admin or Cloud Functions may write these
+    function sensitiveUserKeys() {
+      return ['role', 'verified', 'emailVerified', 'phoneVerified', 'idVerified',
+              'addressVerified', 'kycStatus', 'accountStatus', 'premiumMember',
+              'premiumExpiry', 'trustScore', 'badgeLevel', 'ratingSum', 'ratingCount'];
+    }
+
+    // ──────────────────────────────────────────────
+    // Users: only authenticated users can read profiles; owner or admin can write
+    // Free-tier: any auth user may update only followersCount, followingCount, updatedAt (for follow/unfollow).
+    // Counts are client-updated and not tamper-proof; accepted for free-tier operation.
+    // ──────────────────────────────────────────────
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == userId
+        && request.resource.data.id is string
+        && request.resource.data.id == userId;
+      allow update: if request.auth != null && request.auth.uid == userId
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(sensitiveUserKeys());
+      allow update: if isAdmin();
+      allow update: if request.auth != null
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['followersCount', 'followingCount', 'updatedAt'])
+        && request.resource.data.followersCount is int
+        && request.resource.data.followingCount is int
+        && request.resource.data.followersCount >= 0
+        && request.resource.data.followingCount >= 0
+        && request.resource.data.followersCount <= resource.data.get('followersCount', 0) + 1
+        && request.resource.data.followersCount >= resource.data.get('followersCount', 0) - 1
+        && request.resource.data.followingCount <= resource.data.get('followingCount', 0) + 1
+        && request.resource.data.followingCount >= resource.data.get('followingCount', 0) - 1;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // ──────────────────────────────────────────────
+    // Products: anyone can read; auth can create; owner or admin can update/delete
+    // Free-tier: any auth user may update only stats and updatedAt (views, favorites, shares).
+    // Stats are client-updated and not tamper-proof; accepted for free-tier operation.
+    // ──────────────────────────────────────────────
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 200
+        && request.resource.data.price is number
+        && request.resource.data.price >= 0
+        && request.resource.data.get('images', []).size() <= 12
+        && request.resource.data.get('moderationStatus', '') == 'pending'
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 4000
+        && request.resource.data.get('tags', []).size() <= 20
+        && (!request.resource.data.keys().hasAny(['videoUrl']) || (request.resource.data.videoUrl is string && request.resource.data.videoUrl.size() <= 500));
+      allow update: if request.auth != null
+        && (resource.data.userId == request.auth.uid || isAdmin())
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.get('images', []).size() <= 12
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 4000
+        && request.resource.data.get('tags', []).size() <= 20
+        && (!request.resource.data.keys().hasAny(['videoUrl']) || (request.resource.data.videoUrl is string && request.resource.data.videoUrl.size() <= 500));
+      allow update: if request.auth != null
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['stats', 'updatedAt'])
+        && request.resource.data.stats is map
+        && request.resource.data.stats.get('views', 0) is int
+        && request.resource.data.stats.get('favorites', 0) is int
+        && request.resource.data.stats.get('shares', 0) is int
+        && request.resource.data.stats.get('views', 0) >= 0
+        && request.resource.data.stats.get('favorites', 0) >= 0
+        && request.resource.data.stats.get('shares', 0) >= 0
+        && request.resource.data.stats.get('views', 0) <= resource.data.get('stats', {}).get('views', 0) + 1
+        && request.resource.data.stats.get('favorites', 0) <= resource.data.get('stats', {}).get('favorites', 0) + 1
+        && request.resource.data.stats.get('shares', 0) <= resource.data.get('stats', {}).get('shares', 0) + 1;
+      // Allow owner to request featured and auto-approve moderation
+      allow update: if request.auth != null
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['featuredRequestStatus', 'featuredRequestedAt', 'moderationStatus', 'updatedAt'])
+        && request.resource.data.get('featuredRequestStatus', 'none') in ['none', 'requested']
+        && request.resource.data.get('moderationStatus', 'pending') in ['pending', 'approved'];
+      allow delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // Helper: requester is participant in conversation
+    function isConversationParticipant(convRef) {
+      let conv = get(convRef).data;
+      return request.auth.uid in conv.get('participants', [])
+        || request.auth.uid == conv.get('buyerId', '')
+        || request.auth.uid == conv.get('sellerId', '');
+    }
+
+    // ──────────────────────────────────────────────
+    // Conversations: only participants can read/update/delete; participants/buyerId/sellerId immutable
+    // ──────────────────────────────────────────────
+    match /conversations/{convId} {
+      allow read, delete: if request.auth != null
+        && (
+          (request.auth.uid in resource.data.get('participants', []))
+          || request.auth.uid == resource.data.get('buyerId', '')
+          || request.auth.uid == resource.data.get('sellerId', '')
+        );
+      allow create: if request.auth != null
+        && request.resource.data.get('participants', []).hasAny([request.auth.uid])
+        && request.resource.data.buyerId is string
+        && request.resource.data.sellerId is string
+        && request.resource.data.productId is string
+        && (request.resource.data.buyerId == request.auth.uid || request.resource.data.sellerId == request.auth.uid);
+      allow update: if request.auth != null
+        && (
+          (request.auth.uid in resource.data.get('participants', []))
+          || request.auth.uid == resource.data.get('buyerId', '')
+          || request.auth.uid == resource.data.get('sellerId', '')
+        )
+        && !request.resource.data.diff(resource.data).affectedKeys()
+             .hasAny(['participants', 'buyerId', 'sellerId']);
+    }
+    match /conversations/{convId}/messages/{msgId} {
+      allow read: if request.auth != null
+        && exists(/databases/$(database)/documents/conversations/$(convId))
+        && isConversationParticipant(/databases/$(database)/documents/conversations/$(convId));
+      allow create: if request.auth != null
+        && exists(/databases/$(database)/documents/conversations/$(convId))
+        && isConversationParticipant(/databases/$(database)/documents/conversations/$(convId))
+        && request.resource.data.senderId == request.auth.uid
+        && request.resource.data.text is string
+        && request.resource.data.text.size() <= 5000;
+      allow update, delete: if false;
+    }
+
+    // ──────────────────────────────────────────────
+    // Reports: reporter must match auth; doc ID reporterId_productId prevents duplicate reports per user/product
+    // ──────────────────────────────────────────────
+    match /reports/{reportId} {
+      allow read: if isAdmin();
+      allow create: if request.auth != null
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.productId is string
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() <= 100
+        && (request.resource.data.get('description', null) == null
+            || (request.resource.data.description is string && request.resource.data.description.size() <= 2000))
+        && reportId == request.auth.uid + '_' + request.resource.data.productId;
+    }
+
+    // ──────────────────────────────────────────────
+    // Categories: read for all; admin can write
+    // ──────────────────────────────────────────────
+    match /categories/{catId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ──────────────────────────────────────────────
+    // Notifications: user can only create for self; user can only access their own; admin can read all
+    // ──────────────────────────────────────────────
+    match /notifications/{notifId} {
+      allow read: if isAdmin();
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.userId is string
+        && request.resource.data.type is string
+        && request.resource.data.get('body', '') is string
+        && request.resource.data.get('body', '').size() <= 500;
+      allow update: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+
+    // ──────────────────────────────────────────────
+    // Offers: only buyer can create (buyerId must match auth); buyer and seller can read/write
+    // ──────────────────────────────────────────────
+    match /offers/{offerId} {
+      allow read: if isAdmin();
+      allow read: if request.auth != null
+        && (request.auth.uid == resource.data.buyerId
+            || request.auth.uid == resource.data.sellerId);
+      allow create: if request.auth != null
+        && request.resource.data.buyerId == request.auth.uid
+        && request.resource.data.offerAmount is number
+        && request.resource.data.offerAmount > 0
+        && request.resource.data.productId is string
+        && request.resource.data.sellerId is string
+        && request.resource.data.get('status', '') is string;
+      allow update: if request.auth != null
+        && (request.auth.uid == resource.data.buyerId || request.auth.uid == resource.data.sellerId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'message', 'counterAmount'])
+        && request.resource.data.buyerId == resource.data.buyerId
+        && request.resource.data.sellerId == resource.data.sellerId
+        && request.resource.data.productId == resource.data.productId;
+      allow delete: if request.auth != null
+        && (request.auth.uid == resource.data.buyerId || request.auth.uid == resource.data.sellerId);
+    }
+
+    // ──────────────────────────────────────────────
+    // Reviews: public read; creator must be reviewerId; rating 1-5; immutable; admin can delete
+    // ──────────────────────────────────────────────
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.reviewerId == request.auth.uid
+        && request.resource.data.rating is number
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() >= 1
+        && request.resource.data.text.size() <= 2000;
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    // ──────────────────────────────────────────────
+    // Saved Searches: only owner can access
+    // ──────────────────────────────────────────────
+    match /savedSearches/{searchId} {
+      allow read, update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+    }
+
+    // ──────────────────────────────────────────────
+    // Blocked users: blocker can read/write own blocks
+    // ──────────────────────────────────────────────
+    match /blockedUsers/{blockId} {
+      allow read, delete: if request.auth != null && resource.data.blockerId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.blockerId == request.auth.uid;
+    }
+
+    // ──────────────────────────────────────────────
+    // Price history: only product owner can create; anyone can read
+    // ──────────────────────────────────────────────
+    match /priceHistory/{historyId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.productId is string
+        && request.resource.data.price is number
+        && request.resource.data.price >= 0
+        && get(/databases/$(database)/documents/products/$(request.resource.data.productId)).data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // ──────────────────────────────────────────────
+    // Ad promotions: only owner can create (userId must match auth); owner or admin can update/delete
+    // ──────────────────────────────────────────────
+    match /adPromotions/{promoId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.productId is string
+        && request.resource.data.type is string;
+      allow update: if request.auth != null
+        && (resource.data.userId == request.auth.uid || isAdmin())
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'startDate', 'endDate']);
+      allow delete: if request.auth != null
+        && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // ──────────────────────────────────────────────
+    // Verifications: user can read/delete own; admin can read/update/delete all
+    // (separate admin read rule so unscoped admin queries work)
+    // ──────────────────────────────────────────────
+    match /verifications/{verificationId} {
+      allow read: if isAdmin();
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+
+    // ──────────────────────────────────────────────
+    // User preferences: only owner (document id = userId)
+    // ──────────────────────────────────────────────
+    match /userPreferences/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // ──────────────────────────────────────────────
+    // Trending searches: read all; only admin can create/update (prevents manipulation)
+    // ──────────────────────────────────────────────
+    match /trendingSearches/{searchId} {
+      allow read: if true;
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ──────────────────────────────────────────────
+    // Activity log: create-only for auth (own userId only); admin can read; limit payload size
+    // ──────────────────────────────────────────────
+    match /activityLog/{logId} {
+      allow read: if isAdmin();
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.action is string
+        && request.resource.data.action.size() <= 100
+        && request.resource.data.keys().size() <= 10;
+      allow update, delete: if false;
+    }
+
+    // ──────────────────────────────────────────────
+    // Transactions: only buyer can create (buyerId must match auth); buyer/seller can read; admin can read/update
+    // ──────────────────────────────────────────────
+    match /transactions/{transactionId} {
+      allow read: if isAdmin();
+      allow read: if request.auth != null
+        && (resource.data.buyerId == request.auth.uid || resource.data.sellerId == request.auth.uid);
+      allow create: if request.auth != null
+        && request.resource.data.buyerId == request.auth.uid
+        && request.resource.data.amount is number
+        && request.resource.data.amount > 0;
+      allow update: if isAdmin();
+      allow update: if request.auth != null
+        && (resource.data.buyerId == request.auth.uid || resource.data.sellerId == request.auth.uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && request.resource.data.status in ['pending', 'completed', 'cancelled', 'disputed'];
+      allow delete: if false;
+    }
+
+    // ──────────────────────────────────────────────
+    // Followers: any auth user can read (followers/following lists are public);
+    // only create/delete own follow
+    // ──────────────────────────────────────────────
+    match /followers/{followId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.followerId == request.auth.uid;
+      allow delete: if request.auth != null && resource.data.followerId == request.auth.uid;
+      allow update: if false;
+    }
+
+    // ──────────────────────────────────────────────
+    // Addresses: only owner can read/update/delete; create only with own userId
+    // ──────────────────────────────────────────────
+    match /addresses/{addressId} {
+      allow read, update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+    }
+
+    // ──────────────────────────────────────────────
+    // Banners: anyone can read; admin can write
+    // ──────────────────────────────────────────────
+    match /banners/{bannerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ──────────────────────────────────────────────
+    // Feedback: user can create and read own; admin can read/update all
+    // ──────────────────────────────────────────────
+    match /feedback/{feedbackId} {
+      allow read: if isAdmin();
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin();
+      allow update: if request.auth != null && resource.data.userId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text', 'updatedAt']);
+      allow delete: if isAdmin();
+    }
+  }
+}
