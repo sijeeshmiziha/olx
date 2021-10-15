@@ -157,8 +157,7 @@
 
 @media only screen and (max-width: 700px) {
   .placeSearch,
-  .productSearch,
-  .sellMenu {
+  .productSearch{
     display: none;
   }
 }
