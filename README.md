@@ -14,8 +14,9 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
    - Intermediate React Developer
    - Basic Understanding of Firebase
 
+## How to sell products using olx-clone
+https://user-images.githubusercontent.com/91063960/137454308-1ec2e004-7f3b-4bdb-aac1-3a57d114f154.mp4
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
   
  If you want to sell anything like cars, bikes, computers, gadgets, etc. then you can post an ad with complete details of the item. Olx Clone is a classifieds script that gives the best digital platform to sellers and buyers. It has made online shopping and selling of products easier and quicker. Using this product anyone can launch a robust classifieds website within minutes.
