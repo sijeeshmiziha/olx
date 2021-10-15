@@ -1,0 +1,29 @@
+/* Clean full-screen overlay + OLX teal spinner */
+.overlay-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+}
+
+.overlay-spinner-circle {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(35, 229, 219, 0.25);
+  border-top-color: var(--olx-accent);
+  border-radius: 50%;
+  animation: overlaySpinnerRotate 0.8s linear infinite;
+}
+
+@keyframes overlaySpinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

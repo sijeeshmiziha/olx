@@ -1,0 +1,60 @@
+/* OLX branded splash – centered logo + thin shimmer bar */
+.bar-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.bar-loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.bar-loading-logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  animation: barLoadingPulse 1.5s ease-in-out infinite;
+}
+
+.bar-loading-shimmer {
+  width: 160px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    #ebeeef 0%,
+    #e0e4e5 25%,
+    var(--olx-accent) 50%,
+    #e0e4e5 75%,
+    #ebeeef 100%
+  );
+  background-size: 200% 100%;
+  animation: barLoadingShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes barLoadingPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes barLoadingShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

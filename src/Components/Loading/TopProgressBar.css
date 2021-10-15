@@ -1,0 +1,30 @@
+/* Thin OLX teal progress bar at viewport top – indeterminate shimmer */
+.top-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  background: rgba(35, 229, 219, 0.2);
+  overflow: hidden;
+}
+
+.top-progress-bar-shimmer {
+  height: 100%;
+  width: 40%;
+  background: var(--olx-accent);
+  animation: topProgressShimmer 0.8s ease-in-out;
+}
+
+@keyframes topProgressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(450%);
+  }
+}
