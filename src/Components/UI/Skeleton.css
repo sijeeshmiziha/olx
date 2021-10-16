@@ -1,0 +1,257 @@
+/* Base shimmer – subtle OLX gray palette, 1.5s */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 0%, #e8e8e8 50%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--olx-radius, 4px);
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Card skeleton – mirrors PostCards layout (image 16/10, favorite, price, title, meta) */
+.cardSkeleton {
+  width: 100%;
+  max-width: 222px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--olx-radius-card);
+  border: 1px solid var(--olx-border);
+  box-shadow: var(--olx-card-shadow);
+  overflow: hidden;
+}
+
+.cardSkeletonImageWrap {
+  position: relative;
+  width: 100%;
+}
+
+.cardSkeletonImage {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardSkeletonImage .skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+
+.cardSkeletonFavorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.cardSkeletonContent {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cardSkeletonPrice {
+  margin: 0;
+  border-radius: 4px;
+}
+
+.cardSkeletonTitle {
+  margin: 0;
+  border-radius: 4px;
+}
+
+.cardSkeletonMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.cardSkeletonMetaItem {
+  margin: 0;
+  border-radius: 4px;
+}
+
+/* Chat list skeleton – avatar + 2 lines + time */
+.chatListSkeleton {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chatListSkeleton li {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.chatListSkeletonItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.chatListSkeletonAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.chatListSkeletonBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chatListSkeletonName,
+.chatListSkeletonPreview {
+  margin: 0;
+  border-radius: 4px;
+}
+
+.chatListSkeletonTime {
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 4px;
+}
+
+/* Profile skeleton – avatar + name + stats + body lines */
+.profileSkeleton {
+  padding: var(--olx-content-padding);
+}
+
+.profileSkeletonHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.profileSkeletonAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.profileSkeletonName {
+  margin: 0;
+  border-radius: 4px;
+}
+
+.profileSkeletonStats {
+  display: flex;
+  gap: 16px;
+}
+
+.profileSkeletonStats .skeleton {
+  border-radius: 4px;
+}
+
+.profileSkeletonBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileSkeletonBody .skeleton {
+  border-radius: 4px;
+}
+
+/* Notification list skeleton */
+.notificationListSkeleton {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notificationListSkeletonItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.notificationListSkeletonIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.notificationListSkeletonContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notificationListSkeletonContent .skeleton {
+  margin: 0;
+  border-radius: 4px;
+}
+
+/* Dashboard / list row skeleton */
+.listRowSkeleton {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--olx-border);
+}
+
+.listRowSkeletonImage {
+  width: 80px;
+  height: 60px;
+  border-radius: var(--olx-radius);
+  flex-shrink: 0;
+}
+
+.listRowSkeletonBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.listRowSkeletonBody .skeleton {
+  margin: 0;
+  border-radius: 4px;
+}
+
+.linesSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linesSkeleton .skeleton {
+  margin: 0;
+  border-radius: 4px;
+}

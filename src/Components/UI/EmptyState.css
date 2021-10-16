@@ -1,0 +1,31 @@
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  color: #666;
+}
+
+.emptyStateTitle {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.emptyStateMessage {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+.emptyStateAction {
+  margin-top: 16px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .emptyState {
+    padding: 32px 16px;
+  }
+  .emptyStateTitle {
+    font-size: 16px;
+  }
+}

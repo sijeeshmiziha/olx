@@ -1,0 +1,23 @@
+/* Inline button spinner – 16px, OLX teal */
+.buttonSpinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.buttonSpinnerCircle {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(35, 229, 219, 0.3);
+  border-top-color: var(--olx-accent);
+  border-radius: 50%;
+  animation: buttonSpinnerRotate 0.7s linear infinite;
+}
+
+@keyframes buttonSpinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
