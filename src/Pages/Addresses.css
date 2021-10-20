@@ -1,0 +1,99 @@
+.addressesPage {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.addressesForm {
+  margin-bottom: 32px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.addressesForm h3 {
+  margin-top: 0;
+}
+
+.addressesForm input,
+.addressesForm select,
+.addressesForm textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.addressesForm label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.addressesForm button {
+  padding: 10px 20px;
+  background: var(--olx-primary, #002f34);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addressesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addressesItem {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.addressesItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.addressesDefaultBadge {
+  display: inline-block;
+  font-size: 11px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.addressesEmpty {
+  color: #7f9799;
+  text-align: center;
+  padding: 24px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .addressesPage {
+    padding: 16px;
+  }
+  .addressesForm {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .addressesPage {
+    padding: 12px;
+  }
+  .addressesForm {
+    padding: 12px;
+  }
+  .addressesItem {
+    padding: 12px;
+  }
+}
