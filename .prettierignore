@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Coverage
+coverage/
+
+# Firebase
+.firebase/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Package lock
+package-lock.json
+yarn.lock
+
+# Auto-generated
+*.min.js
+*.min.css
