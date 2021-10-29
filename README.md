@@ -15,6 +15,8 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
    - Basic Understanding of Firebase
 
 ## 👇 How to sell products using olx-clone
+![Screenshot from 2021-10-29 10-01-37](https://user-images.githubusercontent.com/91063960/139376405-043d6cfd-93b3-4486-a07a-2ff3382846d8.png)
+![Screenshot from 2021-10-29 10-01-58](https://user-images.githubusercontent.com/91063960/139376440-1dcd424a-6979-4ec7-bfa0-9e9038ddcbd0.png)
 https://user-images.githubusercontent.com/91063960/137454308-1ec2e004-7f3b-4bdb-aac1-3a57d114f154.mp4
 
 
