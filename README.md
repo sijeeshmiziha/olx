@@ -15,12 +15,17 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
    - Basic Understanding of Firebase
 
 ## 👇 How to sell products using olx-clone
+
+
+https://user-images.githubusercontent.com/91063960/137454308-1ec2e004-7f3b-4bdb-aac1-3a57d114f154.mp4
+
+
+ If you want to sell anything like cars, bikes, computers, gadgets, etc. then you can post an ad with complete details of the item. Olx Clone is a classifieds script that gives the best digital platform to sellers and buyers. It has made online shopping and selling of products easier and quicker. Using this product anyone can launch a robust classifieds website within minutes.
+  Olx-Clone is a reliable JavaScript-based classifieds script developed in React and Firebase with mobile responsive design.
+  
+## Sample images
 ![Screenshot from 2021-10-29 10-01-37](https://user-images.githubusercontent.com/91063960/139376405-043d6cfd-93b3-4486-a07a-2ff3382846d8.png)
 ![Screenshot from 2021-10-29 10-01-58](https://user-images.githubusercontent.com/91063960/139376440-1dcd424a-6979-4ec7-bfa0-9e9038ddcbd0.png)
-  
- If you want to sell anything like cars, bikes, computers, gadgets, etc. then you can post an ad with complete details of the item. Olx Clone is a classifieds script that gives the best digital platform to sellers and buyers. It has made online shopping and selling of products easier and quicker. Using this product anyone can launch a robust classifieds website within minutes.
-https://user-images.githubusercontent.com/91063960/137454308-1ec2e004-7f3b-4bdb-aac1-3a57d114f154.mp4
-  Olx-Clone is a reliable JavaScript-based classifieds script developed in React and Firebase with mobile responsive design.
 ## 🦸 Tech Stack
 
 **Client:** React, Context, CSS
