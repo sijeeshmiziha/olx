@@ -12,10 +12,10 @@ function Footer() {
           </div>
           <div className="list">
             <ul>
-              <li>kolkata</li>
-              <li>Mumbai</li>
-              <li>Chennai</li>
-              <li>Pune</li>
+              <li>Karachi</li>
+              <li>Karachi</li>
+              <li>Karachi</li>
+              <li>Karachi</li>
             </ul>
           </div>
         </div>
